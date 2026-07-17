@@ -1,0 +1,6 @@
+[2026-07-16 14:56:17,138] INFO [audit:10] - [2026-07-16 14:56:17] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150647471)
+[2026-07-16 21:05:24,310] INFO [audit:10] - [2026-07-16 21:05:24] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150606204)
+[2026-07-16 21:30:45,770] INFO [audit:10] - [2026-07-16 21:30:45] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150659882)
+[2026-07-16 21:35:48,788] INFO [audit:10] - [2026-07-16 21:35:48] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150684335)
+[2026-07-17 08:28:14,901] INFO [audit:10] - [2026-07-17 08:28:14] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150646882)
+[2026-07-17 08:30:33,445] INFO [audit:10] - [2026-07-17 08:30:33] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Event Test Patient (ID: 150673722)
