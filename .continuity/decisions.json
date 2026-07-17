@@ -1,0 +1,31 @@
+[
+  {
+    "id": "1784288014782-7d10mr",
+    "question": "Why: Initialize Clinote clinical platform?",
+    "answer": "(Auto-drafted from commit 53d2864 on 2026-07-17.) Please review and expand with actual reasoning.",
+    "timestamp": "2026-07-17T17:01:58+05:30",
+    "tags": [
+      "auto-draft",
+      "needs-review"
+    ],
+    "files": [],
+    "relationships": {
+      "supersedes": [],
+      "supersededBy": [],
+      "relatedTo": [],
+      "causes": [],
+      "causedBy": []
+    },
+    "priority": "medium",
+    "status": "draft",
+    "commitHashes": [
+      "53d28648c95398a60146d7ba6e1310e503a694ea"
+    ],
+    "history": [
+      {
+        "timestamp": "2026-07-17T11:33:34.782Z",
+        "action": "created"
+      }
+    ]
+  }
+]
