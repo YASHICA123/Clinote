@@ -1,0 +1,26 @@
+[2026-07-16 14:56:17,137] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-16 21:05:24,309] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-16 21:30:45,758] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:30:45,766] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:30:45,768] ERROR [api:44] - Supabase insert failed in create, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:30:45,769] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-16 21:30:45,769] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:30:45,771] ERROR [api:14] - Supabase query failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:35:48,777] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:35:48,784] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:35:48,787] ERROR [api:44] - Supabase insert failed in create, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:35:48,787] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-16 21:35:48,788] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:35:48,789] ERROR [api:14] - Supabase query failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:28:14,881] ERROR [api:78] - Supabase query failed in get_all_active: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:28:14,893] ERROR [api:89] - Supabase query failed in get_by_id: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:28:14,899] ERROR [api:108] - Supabase insert failed in create patient: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:28:14,900] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-17 08:28:14,901] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:28:14,903] ERROR [api:14] - Supabase query failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:30:33,429] ERROR [api:78] - Supabase query failed in get_all_active: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:30:33,440] ERROR [api:89] - Supabase query failed in get_by_id: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:30:33,444] ERROR [api:108] - Supabase insert failed in create patient: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:30:33,444] INFO [api:15] - Publishing Event: patient.admitted
+[2026-07-17 08:30:33,445] ERROR [api:75] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:30:33,447] ERROR [api:60] - Supabase query failed in TimelineRepository: [Errno 11001] getaddrinfo failed

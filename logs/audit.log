@@ -1,0 +1,7 @@
+[2026-07-16 21:40:19,631] INFO [audit:10] - [2026-07-16 21:40:19] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Piperacillin + Tazobactam for Patient ID: 150612771
+[2026-07-16 21:40:19,729] INFO [audit:10] - [2026-07-16 21:40:19] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Azithromycin for Patient ID: 150612771
+[2026-07-16 21:40:19,836] INFO [audit:10] - [2026-07-16 21:40:19] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Linezolid for Patient ID: 150612771
+[2026-07-16 21:46:52,182] INFO [audit:10] - [2026-07-16 21:46:52] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Piperacillin + Tazobactam for Patient ID: 150612771
+[2026-07-16 21:46:52,196] INFO [audit:10] - [2026-07-16 21:46:52] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Azithromycin for Patient ID: 150612771
+[2026-07-16 21:46:52,205] INFO [audit:10] - [2026-07-16 21:46:52] User: Dr. Deepak Bhasin | Action: medication.prescribed | Data: Prescribed: Linezolid for Patient ID: 150612771
+[2026-07-17 15:40:33,829] INFO [audit:11] - [2026-07-17 15:40:33] User: Dr. Deepak Bhasin | Action: patient.admitted | Data: Admitted patient: Rajinder N. Sharma (ID: 5fbba9cc-e6ea-54ce-9821-51beba6b3cf1)

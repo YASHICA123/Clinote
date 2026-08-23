@@ -1,0 +1,2495 @@
+[2026-08-23 17:36:43,795] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:37:01,086] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 27, in create_patient
+    record = PatientService.admit_patient(payload.model_dump())
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 25, in admit_patient
+    record = PatientRepository.create(validated)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 92, in create
+    res = supabase.table("patient_master").insert(db_payload).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:37:37,968] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:37:37,996] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:37:42,336] ERROR [errors:9] - Global Exception on /api/v1/patients/150691633: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:37:42,632] ERROR [errors:9] - Global Exception on /api/v1/patients/150691633: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:38:38,417] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:38:38,449] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:38:43,814] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:38:43,844] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:02,224] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:12,132] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:12,164] ERROR [errors:9] - Global Exception on /api/v1/patients/150612771: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 17, in get_patient
+    patient = PatientService.get_patient(patient_id)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 14, in get_patient
+    return PatientRepository.get_by_id(patient_id)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 78, in get_by_id
+    res = supabase.table("patient_master").select("*").eq("patient_id", db_uuid).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:18,876] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:19,063] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+[2026-08-23 17:39:24,344] ERROR [errors:9] - Global Exception on /api/v1/patients: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\middleware\request_id.py", line 26, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1791, in _handle_selected
+    await route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\api\patients.py", line 12, in get_patients
+    data = PatientService.get_active_patients()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\services\patient_service.py", line 10, in get_active_patients
+    return PatientRepository.get_all_active()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\repositories\patient_repository.py", line 72, in get_all_active
+    res = supabase.table("patient_master").select("*").in_("status", ["ICU", "WARD"]).execute()
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 90, in execute
+    r = send_with_retry(self.request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 51, in send_with_retry
+    resp = req.send(headers)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\postgrest\base_request_builder.py", line 90, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\LOQ\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\LOQ\Downloads\Clinote-main\Clinote-main\backend\venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+

@@ -1,0 +1,54 @@
+[2026-07-16 21:39:34,096] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:39:34,100] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:09,248] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:09,306] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:09,667] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:09,718] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,546] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,548] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:40:19,627] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,703] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,705] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:40:19,725] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,809] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,812] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:40:19,833] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,903] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:40:19,989] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:40,424] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:40,434] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:40,444] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:40,452] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:48,288] ERROR [api:57] - Supabase update failed, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:48,300] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,179] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,179] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:46:52,181] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,193] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,194] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:46:52,195] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,202] ERROR [api:29] - Supabase insert failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,203] INFO [api:15] - Publishing Event: medication.prescribed
+[2026-07-16 21:46:52,205] ERROR [api:29] - Supabase insert failed in TimelineRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,212] ERROR [api:57] - Supabase update failed, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,219] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:46:52,227] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:47:19,194] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:47:19,199] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:47:19,203] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-16 21:47:19,209] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:14,784] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:14,797] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:31,189] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:31,198] ERROR [api:25] - Supabase query failed in get_by_id, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:31,208] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:21:31,217] ERROR [api:14] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:23:44,686] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:23:44,691] ERROR [api:14] - Supabase query failed in get_all_active, falling back: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:49,278] ERROR [api:78] - Supabase query failed in get_all_active: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:49,321] ERROR [api:78] - Supabase query failed in get_all_active: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:51,646] ERROR [api:89] - Supabase query failed in get_by_id: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:51,653] ERROR [api:89] - Supabase query failed in get_by_id: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:51,664] ERROR [api:67] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 08:33:51,672] ERROR [api:67] - Supabase query failed in MedicationRepository: [Errno 11001] getaddrinfo failed
+[2026-07-17 15:40:33,693] INFO [api:15] - Publishing Event: patient.admitted
