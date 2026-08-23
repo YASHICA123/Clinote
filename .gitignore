@@ -1,4 +1,26 @@
+# Environment files
 .env
+.env.*
+**/.env
+**/.env.*
+
+# Documents
+*.doc
+*.docx
+*.pdf
+*.ppt
+*.pptx
+
+# Images
+*.jpg
+*.jpeg
+*.png
+
+# Specific files if needed
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+Rules.docx
 # Continuity
 SESSION_HANDOFF.md
 .continuity/*
