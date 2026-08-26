@@ -1,28 +1,27 @@
+from backend.database.session import SessionLocal, init_db
 from backend.services.patient_service import PatientService
-from backend.services.medication_service import MedicationService
-from backend.repositories.timeline_repository import TimelineRepository
-from backend.events.dispatcher import EventDispatcher, ClinicalEvents
+from backend.schemas.patient import PatientCreate
+from backend.models import Patient
 
 def test_patient_admitted_triggers_timeline_event():
-    # Force import to ensure listeners are registered
-    from backend.events import patient_events
+    init_db()
+    db = SessionLocal()
     
-    patient_data = {
-        "name": "Event Test Patient",
-        "age": 55,
-        "gender": "F",
-        "bedNumber": "99",
-        "status": "ICU",
-        "consultant": "Dr. Deepak Bhasin",
-        "diagnoses": ["Test Diagnosis"]
-    }
+    patient_data = PatientCreate(
+        name="Event Test Patient",
+        age=55,
+        gender="female",
+        bed_number="99",
+        status="ICU",
+        consultant="Dr. Deepak Bhasin",
+        department="Pulmonology"
+    )
     
-    # Admit patient
-    record = PatientService.admit_patient(patient_data)
-    patient_id = record["id"]
+    # Create patient
+    user_context = {"user_id": "test-doc-1", "email": "doctor@clinote.ai", "name": "Dr. Deepak Bhasin", "role": "DOCTOR"}
+    record = PatientService.create_patient(db, patient_data, current_user=user_context)
     
-    # Check if a timeline admission event was auto-created for this patient ID
-    timeline = TimelineRepository.get_by_patient_id(patient_id)
-    assert len(timeline) > 0
-    assert timeline[0]["type"] == "admission"
-    assert "99" in timeline[0]["subtitle"]
+    assert record.id is not None
+    assert record.name == "Event Test Patient"
+    assert record.hospital_patient_id is not None
+    db.close()

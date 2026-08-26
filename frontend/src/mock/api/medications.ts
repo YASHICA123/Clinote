@@ -83,6 +83,7 @@ export const getPatientMedications = (patientId: string): Medication[] => {
       route: 'Oral',
       status: 'Active',
       startDate: '12 May 2026',
+      prescriber: 'Dr. Deepak Bhasin'
     }
   ];
 };

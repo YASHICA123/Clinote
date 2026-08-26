@@ -2,32 +2,20 @@ from fastapi import APIRouter
 from backend.api import (
     auth,
     patients,
-    admission,
+    encounters,
+    clinical,
     timeline,
-    medications,
-    investigations,
-    voice,
-    reports,
-    generate,
-    daily_notes,
-    clinical_history,
-    consultations,
-    procedures
+    documents,
+    audit
 )
 
 api_router = APIRouter()
 
-# Include all sub-routers
+# Register Phase 1 core routers
 api_router.include_router(auth.router)
 api_router.include_router(patients.router)
-api_router.include_router(admission.router)
+api_router.include_router(encounters.router)
+api_router.include_router(clinical.router)
 api_router.include_router(timeline.router)
-api_router.include_router(medications.router)
-api_router.include_router(investigations.router)
-api_router.include_router(voice.router)
-api_router.include_router(reports.router)
-api_router.include_router(generate.router)
-api_router.include_router(daily_notes.router)
-api_router.include_router(clinical_history.router)
-api_router.include_router(consultations.router)
-api_router.include_router(procedures.router)
+api_router.include_router(documents.router)
+api_router.include_router(audit.router)

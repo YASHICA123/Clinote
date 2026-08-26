@@ -27,47 +27,77 @@ export const http = {
       ...options,
       headers: this.getHeaders(options)
     });
-    if (!res.ok) throw new Error(`HTTP GET failed: ${res.statusText}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.detail || err.message || `HTTP GET failed: ${res.statusText}`);
+    }
     const json = await res.json();
     return this.unwrap<T>(json);
   },
 
   async post<T>(url: string, data: any, options?: RequestInit): Promise<T> {
-    const headers = this.getHeaders(options);
+    const headers = this.getHeaders(options) as Record<string, string>;
+    const isFormData = data instanceof FormData;
+    
+    if (!isFormData) {
+      headers['Content-Type'] = 'application/json';
+    }
+
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...headers },
-      body: JSON.stringify(data),
+      headers,
+      body: isFormData ? data : JSON.stringify(data),
       ...options,
     });
-    if (!res.ok) throw new Error(`HTTP POST failed: ${res.statusText}`);
-    const json = await res.json();
+
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(json.detail || json.message || `HTTP POST failed: ${res.statusText}`);
+    }
     return this.unwrap<T>(json);
   },
 
   async put<T>(url: string, data: any, options?: RequestInit): Promise<T> {
-    const headers = this.getHeaders(options);
+    const headers = this.getHeaders(options) as Record<string, string>;
+    const isFormData = data instanceof FormData;
+
+    if (!isFormData) {
+      headers['Content-Type'] = 'application/json';
+    }
+
     const res = await fetch(url, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', ...headers },
-      body: JSON.stringify(data),
+      headers,
+      body: isFormData ? data : JSON.stringify(data),
       ...options,
     });
-    if (!res.ok) throw new Error(`HTTP PUT failed: ${res.statusText}`);
-    const json = await res.json();
+
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(json.detail || json.message || `HTTP PUT failed: ${res.statusText}`);
+    }
     return this.unwrap<T>(json);
   },
 
   async patch<T>(url: string, data: any, options?: RequestInit): Promise<T> {
-    const headers = this.getHeaders(options);
+    const headers = this.getHeaders(options) as Record<string, string>;
+    const isFormData = data instanceof FormData;
+
+    if (!isFormData) {
+      headers['Content-Type'] = 'application/json';
+    }
+
     const res = await fetch(url, {
       method: 'PATCH',
-      headers: { 'Content-Type': 'application/json', ...headers },
-      body: JSON.stringify(data),
+      headers,
+      body: isFormData ? data : JSON.stringify(data),
       ...options,
     });
-    if (!res.ok) throw new Error(`HTTP PATCH failed: ${res.statusText}`);
-    const json = await res.json();
+
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(json.detail || json.message || `HTTP PATCH failed: ${res.statusText}`);
+    }
     return this.unwrap<T>(json);
   },
 
@@ -77,8 +107,11 @@ export const http = {
       ...options,
       headers: this.getHeaders(options)
     });
-    if (!res.ok) throw new Error(`HTTP DELETE failed: ${res.statusText}`);
-    const json = await res.json();
+
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(json.detail || json.message || `HTTP DELETE failed: ${res.statusText}`);
+    }
     return this.unwrap<T>(json);
   },
 };

@@ -1,20 +1,28 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
+from typing import Optional
 
 class LoginRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
-class UserProfileResponse(BaseModel):
+class RegisterRequest(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+    role: Optional[str] = "DOCTOR"
+    specialty: Optional[str] = "General Medicine"
+
+class UserProfile(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     name: str
-    role: str
-    specialty: str
     email: str
-    is_logged_in: bool
+    role: str
+    specialty: Optional[str] = None
+    is_active: bool = True
 
-class LoginResponse(BaseModel):
-    success: bool
-    user: UserProfileResponse
-    token: str
-    refresh_token: str
-
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserProfile

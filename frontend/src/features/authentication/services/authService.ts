@@ -11,17 +11,20 @@ export const authService = {
       };
       
       const res = await http.post<any>(`${config.apiUrl}/auth/login`, payload);
-      if (res.success && res.token) {
-        localStorage.setItem('token', res.token);
+      const token = res.access_token || res.token || (res.data && (res.data.access_token || res.data.token));
+      const user = res.user || (res.data && res.data.user);
+
+      if (token && user) {
+        localStorage.setItem('token', token);
         
         // Map backend user response to Doctor interface
         const doctor: Doctor = {
-          id: res.user.id,
-          name: res.user.name,
-          email: res.user.email,
-          avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(res.user.name)}`,
-          specialty: res.user.specialty || 'General Practitioner',
-          department: res.user.specialty || 'Internal Medicine'
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.name)}`,
+          specialty: user.specialty || 'General Practitioner',
+          department: user.specialty || 'Internal Medicine'
         };
         
         return {
@@ -35,10 +38,11 @@ export const authService = {
         error: res.message || 'Login failed'
       };
     } catch (err: any) {
-      console.error(err);
+      console.error('Login error:', err);
+      const msg = err?.response?.data?.detail || err?.message || 'Invalid credentials. Check your email and password.';
       return {
         success: false,
-        error: 'Invalid credentials. Check your email and password.'
+        error: msg
       };
     }
   }

@@ -1,20 +1,25 @@
-export type PatientStatus = 'ICU' | 'WARD' | 'DISCHARGED';
+export type PatientStatus = 'ACTIVE' | 'ICU' | 'WARD' | 'DISCHARGED';
 
 export interface Patient {
   id: string;
+  hospital_patient_id?: string;
+  displayId?: string;
+  ipNumber?: string;
   name: string;
-  age: number;
-  gender: 'M' | 'F' | 'Other';
-  bedNumber: string;
+  date_of_birth?: string;
+  age?: number;
+  gender: string;
+  bedNumber?: string;
+  bed_number?: string;
   status: PatientStatus;
-  statusText: 'Active' | 'Discharged' | 'Admitted';
-  admissionDate: string;
-  admissionSource: string;
-  consultant: string;
+  statusText?: string;
+  department?: string;
+  admissionDate?: string;
+  admissionSource?: string;
+  consultant?: string;
+  active_encounter_id?: string;
   isNew?: boolean;
   avatar?: string;
-  ipNumber?: string;
-  displayId?: string;
   diagnoses?: string[];
   vitals?: {
     hr: number;
@@ -23,6 +28,8 @@ export interface Patient {
     spo2: number;
     temp: string;
   };
-  pastHistory?: string[];
   suspectedCause?: string;
+  pastHistory?: string[];
+  created_at?: string;
+  updated_at?: string;
 }

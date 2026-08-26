@@ -1,18 +1,23 @@
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, ConfigDict
+from typing import List, Optional
+from datetime import datetime
 
-class TimelineEventCreateRequest(BaseModel):
-    patientId: str
-    type: str
-    title: str
-    subtitle: Optional[str] = None
-    details: Optional[str] = None
+class TimelineEventItem(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
 
-class TimelineEventResponse(BaseModel):
+    event_id: str
     id: str
-    patientId: str
+    patient_id: str
+    encounter_id: Optional[str] = None
+    event_type: str
     type: str
-    title: str
-    subtitle: Optional[str] = None
+    title: Optional[str] = None
+    content: str
+    details: str
+    created_by: str
+    created_at: datetime
     timestamp: str
-    details: Optional[str] = None
+
+class TimelineResponse(BaseModel):
+    patient_id: str
+    events: List[TimelineEventItem]

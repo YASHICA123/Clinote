@@ -1,47 +1,66 @@
-from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
+from pydantic import BaseModel, ConfigDict
+from typing import Optional, List, Dict, Any
+from datetime import datetime
 
-class VitalsModel(BaseModel):
-    hr: Optional[int] = None
-    bp: Optional[str] = None
-    rr: Optional[int] = None
-    spo2: Optional[int] = None
-    temp: Optional[str] = None
-
-class PatientCreateRequest(BaseModel):
+class PatientCreate(BaseModel):
     name: str
-    age: int
-    gender: str
-    bedNumber: Optional[str] = None
-    status: str
-    admissionSource: Optional[str] = None
-    consultant: Optional[str] = None
-    diagnoses: List[str] = []
-    vitals: Optional[VitalsModel] = None
-
-class PatientUpdateRequest(BaseModel):
-    name: Optional[str] = None
+    hospital_patient_id: Optional[str] = None
+    date_of_birth: Optional[str] = None
+    gender: Optional[str] = "other"
     age: Optional[int] = None
+    status: Optional[str] = "ACTIVE"
+    department: Optional[str] = "General Medicine"
+    bed_number: Optional[str] = None
+    consultant: Optional[str] = None
+    initial_encounter_note: Optional[str] = None
+
+class PatientUpdate(BaseModel):
+    name: Optional[str] = None
+    hospital_patient_id: Optional[str] = None
+    date_of_birth: Optional[str] = None
     gender: Optional[str] = None
-    bedNumber: Optional[str] = None
+    age: Optional[int] = None
     status: Optional[str] = None
-    statusText: Optional[str] = None
-    diagnoses: Optional[List[str]] = None
-    vitals: Optional[VitalsModel] = None
+    department: Optional[str] = None
+    bed_number: Optional[str] = None
+    consultant: Optional[str] = None
 
 class PatientResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
+    hospital_patient_id: str
     name: str
-    age: int
+    date_of_birth: Optional[str] = None
     gender: str
-    bedNumber: str
+    age: Optional[int] = None
     status: str
-    statusText: str
-    admissionDate: str
-    admissionSource: Optional[str] = None
+    department: Optional[str] = None
+    bed_number: Optional[str] = None
     consultant: Optional[str] = None
-    diagnoses: List[str]
-    vitals: Optional[VitalsModel] = None
-    isNew: Optional[bool] = None
-    displayId: Optional[str] = None
-    ipNumber: Optional[str] = None
+    created_at: datetime
+    updated_at: datetime
+    active_encounter_id: Optional[str] = None
+
+class PatientAdmissionData(BaseModel):
+    full_name: str
+    uhid: Optional[str] = None
+    date_of_birth: Optional[str] = None
+    age: Optional[int] = None
+    gender: Optional[str] = "male"
+    phone_number: Optional[str] = None
+    address: Optional[str] = None
+    admission_date: Optional[str] = None
+    admission_time: Optional[str] = None
+    department: Optional[str] = "General Medicine"
+    ward: Optional[str] = None
+    consultant: Optional[str] = None
+    hospital: Optional[str] = None
+
+class PatientConfirmRequest(BaseModel):
+    upload_id: Optional[str] = None
+    patient_data: PatientAdmissionData
+
+# Alias for backwards compatibility
+PatientCreateRequest = PatientCreate
+PatientUpdateRequest = PatientUpdate

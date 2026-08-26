@@ -1,5 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Depends
-from backend.schemas.auth import LoginRequest
+from sqlalchemy.orm import Session
+from backend.database.session import get_db
+from backend.schemas.auth import LoginRequest, RegisterRequest
 from backend.services.auth_service import AuthService
 from backend.middleware.auth import get_current_user_profile
 from backend.utils.responses import standard_response
@@ -10,37 +12,41 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 class RefreshRequest(BaseModel):
     refresh_token: str
 
-@router.post("/login")
-def login(payload: LoginRequest):
-    res = AuthService.login(payload.model_dump())
-    if not res.get("success"):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=res.get("message", "Invalid credentials")
-        )
-    return standard_response(True, "Login successful", res)
-
-@router.post("/logout")
-def logout(current_user: dict = Depends(get_current_user_profile)):
-    res = AuthService.logout(current_user.get("sub"))
-    return standard_response(True, "Logout successful", res)
-
-@router.get("/me")
-def get_me(current_user: dict = Depends(get_current_user_profile)):
-    user = AuthService.get_current_user_profile(current_user.get("sub"))
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User session not found"
-        )
-    return standard_response(True, "User session retrieved successfully", user)
-
-@router.post("/refresh")
-def refresh_token(payload: RefreshRequest):
-    res = AuthService.refresh(payload.refresh_token)
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+def register(payload: RegisterRequest, db: Session = Depends(get_db)):
+    res = AuthService.register_user(db, payload)
     if not res.get("success"):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=res.get("message", "Invalid refresh token")
+            detail=res.get("message", "Registration failed")
         )
-    return standard_response(True, "Token refreshed successfully", res)
+    return standard_response(True, "User registered successfully", res)
+
+@router.post("/login")
+def login(payload: LoginRequest, db: Session = Depends(get_db)):
+    res = AuthService.login(db, payload)
+    if not res.get("success"):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=res.get("message", "Invalid email or password")
+        )
+    return standard_response(True, "Login successful", res)
+
+@router.get("/me")
+def get_me(current_user: dict = Depends(get_current_user_profile), db: Session = Depends(get_db)):
+    user = AuthService.get_current_user_profile(db, current_user.get("sub"))
+    if not user:
+        # If user session exists from token payload
+        user = {
+            "id": current_user.get("sub"),
+            "name": current_user.get("name"),
+            "email": current_user.get("email"),
+            "role": current_user.get("role", "DOCTOR"),
+            "specialty": current_user.get("specialty", "General Medicine"),
+            "is_active": True
+        }
+    return standard_response(True, "User profile retrieved successfully", user)
+
+@router.post("/logout")
+def logout(current_user: dict = Depends(get_current_user_profile)):
+    return standard_response(True, "Logout successful", {"success": True})

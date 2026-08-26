@@ -6,7 +6,7 @@ import { http } from '../services/http';
 import { config } from '../services/config';
 
 export type PageType = 'login' | 'dashboard' | 'patient-workspace' | 'settings';
-export type PatientTabType = 'overview' | 'timeline' | 'medications' | 'investigations' | 'reports' | 'course' | 'discharge' | 'audit';
+export type PatientTabType = 'overview' | 'timeline' | 'documents' | 'encounters' | 'audit' | 'discharge' | 'medications' | 'investigations' | 'reports' | 'course';
 
 interface AppContextType {
   currentPage: PageType;

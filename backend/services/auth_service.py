@@ -1,106 +1,109 @@
 from typing import Dict, Any, Optional
+from passlib.context import CryptContext
+from sqlalchemy.orm import Session
+from backend.models.user import User
 from backend.utils.auth import TokenUtils
+from backend.schemas.auth import LoginRequest, RegisterRequest
 
-# Hardcoded clinician database mapping to roles
-CLINICIAN_DB = {
-    "admin@clinote.ai": {"password": "admin123", "id": "u0", "name": "System Admin", "role": "Admin", "specialty": "Administration"},
-    "dr.bhasin@clinote.ai": {"password": "doctor123", "id": "u1", "name": "Dr. Deepak Bhasin", "role": "Consultant", "specialty": "Chief Consultant"},
-    "deepak.bhasin@clinote.com": {"password": "password123", "id": "u1", "name": "Dr. Deepak Bhasin", "role": "Consultant", "specialty": "Chief Consultant"},
-    "doctor@clinote.ai": {"password": "doctor123", "id": "u2", "name": "Dr. Sarah Paul", "role": "Doctor", "specialty": "Pulmonologist"},
-    "resident@clinote.ai": {"password": "resident123", "id": "u3", "name": "Dr. Amit Roy", "role": "Resident", "specialty": "Internal Medicine"},
-    "nurse@clinote.ai": {"password": "nurse123", "id": "u4", "name": "Nurse Emily", "role": "Nurse", "specialty": "ICU Staff Nurse"}
-}
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class AuthService:
-    _active_sessions: Dict[str, dict] = {}
+    @staticmethod
+    def verify_password(plain_password: str, hashed_password: str) -> bool:
+        return pwd_context.verify(plain_password, hashed_password)
+
+    @staticmethod
+    def get_password_hash(password: str) -> str:
+        return pwd_context.hash(password)
 
     @classmethod
-    def login(cls, credentials: Dict[str, Any]) -> Dict[str, Any]:
-        email = credentials.get("email", "").strip().lower()
-        password = credentials.get("password", "")
-        
-        user_info = CLINICIAN_DB.get(email)
-        if not user_info or user_info["password"] != password:
-            return {"success": False, "message": "Invalid email or password"}
-        
-        # Token payload
+    def register_user(cls, db: Session, payload: RegisterRequest) -> Dict[str, Any]:
+        existing_user = db.query(User).filter(User.email == payload.email.lower().strip()).first()
+        if existing_user:
+            return {"success": False, "message": "Email already registered"}
+
+        new_user = User(
+            name=payload.name,
+            email=payload.email.lower().strip(),
+            password_hash=cls.get_password_hash(payload.password),
+            role=payload.role or "DOCTOR",
+            specialty=payload.specialty or "General Medicine",
+            is_active=True
+        )
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+
         token_data = {
-            "sub": user_info["id"],
-            "email": email,
-            "role": user_info["role"],
-            "name": user_info["name"]
+            "sub": new_user.id,
+            "email": new_user.email,
+            "role": new_user.role,
+            "name": new_user.name
         }
-        
         access_token = TokenUtils.create_access_token(token_data)
-        refresh_token = TokenUtils.create_refresh_token({"sub": user_info["id"]})
-        
+
         user_profile = {
-            "id": user_info["id"],
-            "name": user_info["name"],
-            "role": user_info["role"],
-            "specialty": user_info["specialty"],
-            "email": email,
-            "is_logged_in": True
+            "id": new_user.id,
+            "name": new_user.name,
+            "email": new_user.email,
+            "role": new_user.role,
+            "specialty": new_user.specialty,
+            "is_active": new_user.is_active
         }
-        
-        # Track active session
-        cls._active_sessions[user_info["id"]] = user_profile
-        
+
         return {
             "success": True,
             "user": user_profile,
-            "token": access_token,
-            "refresh_token": refresh_token
+            "access_token": access_token,
+            "token_type": "bearer"
         }
 
     @classmethod
-    def logout(cls, user_id: str) -> Dict[str, Any]:
-        if user_id in cls._active_sessions:
-            cls._active_sessions[user_id]["is_logged_in"] = False
-            del cls._active_sessions[user_id]
-        return {"success": True}
+    def login(cls, db: Session, payload: LoginRequest) -> Dict[str, Any]:
+        email = payload.email.lower().strip()
+        user = db.query(User).filter(User.email == email).first()
 
-    @classmethod
-    def refresh(cls, refresh_token: str) -> Dict[str, Any]:
-        payload = TokenUtils.verify_token(refresh_token, "refresh")
-        if not payload:
-            return {"success": False, "message": "Invalid or expired refresh token"}
-        
-        user_id = payload.get("sub")
-        # Find user info
-        user_email = next((email for email, info in CLINICIAN_DB.items() if info["id"] == user_id), None)
-        if not user_email:
-            return {"success": False, "message": "User not found"}
-            
-        user_info = CLINICIAN_DB[user_email]
+        if not user or not cls.verify_password(payload.password, user.password_hash):
+            return {"success": False, "message": "Invalid email or password"}
+
+        if not user.is_active:
+            return {"success": False, "message": "User account is disabled"}
+
         token_data = {
-            "sub": user_id,
-            "email": user_email,
-            "role": user_info["role"],
-            "name": user_info["name"]
+            "sub": user.id,
+            "email": user.email,
+            "role": user.role,
+            "name": user.name
         }
-        
-        new_access = TokenUtils.create_access_token(token_data)
+        access_token = TokenUtils.create_access_token(token_data)
+
+        user_profile = {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "role": user.role,
+            "specialty": user.specialty,
+            "is_active": user.is_active
+        }
+
         return {
             "success": True,
-            "token": new_access
+            "user": user_profile,
+            "access_token": access_token,
+            "token": access_token,  # compatibility
+            "token_type": "bearer"
         }
 
     @classmethod
-    def get_current_user_profile(cls, user_id: str) -> Optional[Dict[str, Any]]:
-        # Check active session, fallback to DB metadata
-        if user_id in cls._active_sessions:
-            return cls._active_sessions[user_id]
-            
-        user_email = next((email for email, info in CLINICIAN_DB.items() if info["id"] == user_id), None)
-        if user_email:
-            info = CLINICIAN_DB[user_email]
-            return {
-                "id": info["id"],
-                "name": info["name"],
-                "role": info["role"],
-                "specialty": info["specialty"],
-                "email": user_email,
-                "is_logged_in": True
-            }
-        return None
+    def get_current_user_profile(cls, db: Session, user_id: str) -> Optional[Dict[str, Any]]:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return None
+        return {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "role": user.role,
+            "specialty": user.specialty,
+            "is_active": user.is_active
+        }

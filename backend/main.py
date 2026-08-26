@@ -1,10 +1,12 @@
 import uvicorn
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException
 
 from backend.config.settings import settings
+from backend.database.session import init_db, SessionLocal
 from backend.api.router_v1 import api_router
 from backend.middleware.request_id import RequestIDMiddleware
 from backend.exceptions.handler import (
@@ -12,15 +14,18 @@ from backend.exceptions.handler import (
     http_exception_handler,
     validation_exception_handler
 )
-from backend.database.supabase import supabase
 
-# Register event listeners
-from backend.events import patient_events, timeline_events, audit_events
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Initialize Database tables and seed initial data
+    init_db()
+    yield
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    description="Layered Healthcare Clinical AI Backend",
-    version="1.0.0"
+    description="Clinote Clinical Platform - Phase 1 Foundation",
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # 1. Register Request ID Middleware
@@ -48,6 +53,7 @@ def read_root():
     return {
         "status": "online",
         "service": settings.PROJECT_NAME,
+        "phase": "Phase 1: Foundation",
         "docs_url": "/docs",
         "health_url": "/health"
     }
@@ -55,33 +61,24 @@ def read_root():
 @app.get("/health")
 def health_check():
     db_status = "disconnected"
-    storage_status = "disconnected"
     is_healthy = True
     
     try:
-        if supabase:
-            # Check Database connectivity by pinging patient_master
-            supabase.table("patient_master").select("patient_id").limit(1).execute()
-            db_status = "connected"
-    except Exception:
+        db = SessionLocal()
+        from sqlalchemy import text
+        db.execute(text("SELECT 1"))
+        db.close()
+        db_status = "connected"
+    except Exception as e:
         is_healthy = False
+        db_status = f"error: {str(e)}"
         
-    try:
-        if supabase:
-            # Check Storage connectivity by querying the admissions bucket
-            supabase.storage.get_bucket("admissions")
-            storage_status = "connected"
-    except Exception:
-        is_healthy = False
-        
-    status_str = "healthy" if is_healthy and db_status == "connected" and storage_status == "connected" else "unhealthy"
-    
     return {
-        "status": status_str,
+        "status": "healthy" if is_healthy else "unhealthy",
         "database": db_status,
-        "storage": storage_status,
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "phase": "Phase 1: Foundation"
     }
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=settings.API_PORT, reload=True)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=settings.API_PORT, reload=True)

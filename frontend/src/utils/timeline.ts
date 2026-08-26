@@ -5,14 +5,16 @@ import type { TimelineEvent } from '../types';
  */
 export function sortTimelineEvents(events: TimelineEvent[], order: 'asc' | 'desc' = 'desc'): TimelineEvent[] {
   return [...events].sort((a, b) => {
-    const timeA = new Date(a.timestamp).getTime();
-    const timeB = new Date(b.timestamp).getTime();
+    const strA = a.created_at || a.timestamp || '';
+    const strB = b.created_at || b.timestamp || '';
+    const timeA = strA ? new Date(strA).getTime() : 0;
+    const timeB = strB ? new Date(strB).getTime() : 0;
     
     // Fallback if parsing fails
     if (isNaN(timeA) || isNaN(timeB)) {
       return order === 'desc' 
-        ? b.timestamp.localeCompare(a.timestamp) 
-        : a.timestamp.localeCompare(b.timestamp);
+        ? strB.localeCompare(strA) 
+        : strA.localeCompare(strB);
     }
     
     return order === 'desc' ? timeB - timeA : timeA - timeB;

@@ -1,11 +1,10 @@
 import type { Notification } from '../../../types';
 import { mockNotifications } from '../../../mock/notifications';
 
-let notificationsList = [...mockNotifications];
+let notificationsList: Notification[] = [...mockNotifications];
 
 export const notificationService = {
   getNotifications: async (): Promise<Notification[]> => {
-    await new Promise((resolve) => setTimeout(resolve, 100));
     return notificationsList;
   },
 
@@ -17,5 +16,9 @@ export const notificationService = {
 
   markAllAsRead: async (): Promise<void> => {
     notificationsList = notificationsList.map(n => ({ ...n, isRead: true }));
+  },
+
+  addNotification: (notification: Notification): void => {
+    notificationsList = [notification, ...notificationsList];
   }
 };

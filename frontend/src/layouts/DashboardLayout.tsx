@@ -117,10 +117,6 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
                             key={notif.id}
                             onClick={() => {
                               markNotificationRead(notif.id);
-                              if (notif.message.includes('Rajinder N. Sharma')) {
-                                setActivePatientId('150612771');
-                                setCurrentPage('patient-workspace');
-                              }
                               setShowNotifications(false);
                             }}
                             className={`p-3 border-b border-slate-50 hover:bg-slate-50 transition-colors cursor-pointer flex gap-3 ${

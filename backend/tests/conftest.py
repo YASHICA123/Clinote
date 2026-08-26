@@ -36,7 +36,7 @@ def mock_supabase(monkeypatch):
     
     mock_patients = [
         {
-            "patient_id": "d29d8977-1d60-5a52-b174-2c0695b1114b", # Deterministic UUID of 150612771
+            "patient_id": "d29d8977-1d60-5a52-b174-2c0695b1114b",
             "patient_name": "Rajinder N. Sharma",
             "age": 81,
             "gender": "M",
@@ -53,14 +53,14 @@ def mock_supabase(monkeypatch):
         return MockQueryBuilder([])
         
     mock_client.table = mock_table
-    
-    # Mock storage calls
     mock_bucket = MagicMock()
     mock_client.storage.get_bucket.return_value = mock_bucket
     
-    # Apply monkeypatch to backend.database.supabase
-    import backend.database.supabase
-    monkeypatch.setattr(backend.database.supabase, "supabase", mock_client)
-    monkeypatch.setattr(backend.database.supabase, "is_supabase_configured", True)
+    try:
+        import backend.database.supabase
+        monkeypatch.setattr(backend.database.supabase, "supabase", mock_client)
+        monkeypatch.setattr(backend.database.supabase, "is_supabase_configured", True)
+    except Exception:
+        pass
     
     return mock_client

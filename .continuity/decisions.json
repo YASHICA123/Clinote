@@ -2,11 +2,11 @@
   {
     "id": "1784288014782-7d10mr",
     "question": "Why: Initialize Clinote clinical platform?",
-    "answer": "(Auto-drafted from commit 53d2864 on 2026-07-17.) Please review and expand with actual reasoning.",
+    "answer": "Base setup of Clinote clinical intelligent documentation workspace.",
     "timestamp": "2026-07-17T17:01:58+05:30",
     "tags": [
-      "auto-draft",
-      "needs-review"
+      "initialization",
+      "architecture"
     ],
     "files": [],
     "relationships": {
@@ -17,13 +17,52 @@
       "causedBy": []
     },
     "priority": "medium",
-    "status": "draft",
+    "status": "active",
     "commitHashes": [
       "53d28648c95398a60146d7ba6e1310e503a694ea"
     ],
     "history": [
       {
         "timestamp": "2026-07-17T11:33:34.782Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "id": "1784288020000-phase1",
+    "question": "How should Clinote Phase 1 Foundation be structured and implemented?",
+    "answer": "Implemented Phase 1 Foundation without LLMs/voice according to phase1.md: SQLAlchemy ORM layer (supporting SQLite/Postgres), JWT auth (/api/v1/auth/*), Patient management & search (/api/v1/patients), Encounter tracking (/api/v1/encounters), Clinical events (/api/v1/clinical/events), Chronological timeline (/api/v1/patients/{id}/timeline), Clinical document lifecycle with draft/finalize immutability (/api/v1/documents), and audit logging (/api/v1/audit/logs). Built responsive React 19 UI with dashboard, timeline, document editor, and encounter management.",
+    "timestamp": "2026-08-25T22:04:00+05:30",
+    "tags": [
+      "phase1",
+      "architecture",
+      "database",
+      "emr-foundation",
+      "auth",
+      "timeline"
+    ],
+    "files": [
+      "backend/database/session.py",
+      "backend/models/*",
+      "backend/schemas/*",
+      "backend/services/*",
+      "backend/api/*",
+      "frontend/src/pages/*",
+      "frontend/src/features/*"
+    ],
+    "relationships": {
+      "supersedes": [],
+      "supersededBy": [],
+      "relatedTo": ["1784288014782-7d10mr"],
+      "causes": [],
+      "causedBy": []
+    },
+    "priority": "high",
+    "status": "active",
+    "commitHashes": [],
+    "history": [
+      {
+        "timestamp": "2026-08-25T16:34:00.000Z",
         "action": "created"
       }
     ]

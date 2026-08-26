@@ -47,7 +47,7 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
   // Form edit states (pre-populated with mock AI extracted data matching Image 2)
   const [name, setName] = useState(patient.name || 'Rajinder N. Sharma');
   const [age, setAge] = useState(patient.age?.toString() || '81');
-  const [gender, setGender] = useState<'M' | 'F' | 'Other'>(patient.gender || 'M');
+  const [gender, setGender] = useState<'M' | 'F' | 'Other'>((patient.gender as 'M' | 'F' | 'Other') || 'M');
   const [consultant, setConsultant] = useState(patient.consultant || 'Dr. Deepak Bhasin');
   
   const [pastHistory, setPastHistory] = useState<string[]>([
