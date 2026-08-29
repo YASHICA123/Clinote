@@ -53,7 +53,9 @@
     "relationships": {
       "supersedes": [],
       "supersededBy": [],
-      "relatedTo": ["1784288014782-7d10mr"],
+      "relatedTo": [
+        "1784288014782-7d10mr"
+      ],
       "causes": [],
       "causedBy": []
     },
@@ -65,6 +67,7 @@
         "timestamp": "2026-08-25T16:34:00.000Z",
         "action": "created"
       }
+    ]
   },
   {
     "id": "1784288030000-bcrypt-fix",
@@ -85,7 +88,9 @@
     "relationships": {
       "supersedes": [],
       "supersededBy": [],
-      "relatedTo": ["1784288020000-phase1"],
+      "relatedTo": [
+        "1784288020000-phase1"
+      ],
       "causes": [],
       "causedBy": []
     },
