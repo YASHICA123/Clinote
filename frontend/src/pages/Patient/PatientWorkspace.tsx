@@ -8,6 +8,7 @@ import type { Patient, Encounter } from '../../types';
 import { TimelineTab } from '../../features/timeline/components/TimelineTab';
 import { DocumentsTab } from '../../features/documents/components/DocumentsTab';
 import { EncountersTab } from '../../features/encounter/components/EncountersTab';
+import { DischargeTab } from '../../features/discharge/components/DischargeTab';
 import { AuditTab } from '../../features/audit/components/AuditTab';
 import { OverviewTab } from '../../features/overview/components/OverviewTab';
 
@@ -21,23 +22,24 @@ import { Button } from '../../components/ui/Button';
 import { Loader } from '../../components/ui/Loader';
 
 // Icons
-import { 
+import {
   ArrowLeft,
   FileText,
   Calendar,
   Info,
   Clock,
   ShieldCheck,
-  FileEdit
+  FileEdit,
+  FileCheck
 } from 'lucide-react';
 
 export const PatientWorkspace: React.FC = () => {
-  const { 
-    activePatientId, 
-    setActivePatientId, 
-    setCurrentPage, 
-    activeTab, 
-    setActiveTab 
+  const {
+    activePatientId,
+    setActivePatientId,
+    setCurrentPage,
+    activeTab,
+    setActiveTab
   } = useApp();
 
   const [patient, setPatient] = useState<Patient | null>(null);
@@ -115,6 +117,18 @@ export const PatientWorkspace: React.FC = () => {
             <Calendar size={15} />
             + New Encounter
           </Button>
+
+          <Button
+            onClick={() => setActiveTab('discharge')}
+            variant="outline"
+            className={`font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 shadow-xs transition-colors ${activeTab === 'discharge'
+                ? 'bg-teal-600 text-white border-teal-600'
+                : 'bg-white text-teal-700 hover:bg-teal-50 border-teal-200'
+              }`}
+          >
+            <FileCheck size={15} />
+            Discharge Summary
+          </Button>
         </div>
       </div>
 
@@ -126,18 +140,17 @@ export const PatientWorkspace: React.FC = () => {
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-lg font-black shadow-md shadow-blue-500/20 shrink-0">
               {patient.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
             </div>
-            
+
             <div className="space-y-1">
               <div className="flex flex-wrap items-center gap-2.5">
                 <h1 className="text-xl font-black text-slate-900 tracking-tight">{patient.name}</h1>
                 <span className="text-xs px-2.5 py-0.5 bg-blue-50 text-blue-700 font-mono font-bold rounded-lg border border-blue-200">
                   {patient.hospital_patient_id || 'MRN-PENDING'}
                 </span>
-                <span className={`text-[10px] px-2.5 py-0.5 font-extrabold rounded-full uppercase tracking-wider ${
-                  patient.status === 'ICU' ? 'bg-rose-100 text-rose-700' :
-                  patient.status === 'WARD' ? 'bg-purple-100 text-purple-700' :
-                  patient.status === 'DISCHARGED' ? 'bg-slate-100 text-slate-600' : 'bg-emerald-100 text-emerald-700'
-                }`}>
+                <span className={`text-[10px] px-2.5 py-0.5 font-extrabold rounded-full uppercase tracking-wider ${patient.status === 'ICU' ? 'bg-rose-100 text-rose-700' :
+                    patient.status === 'WARD' ? 'bg-purple-100 text-purple-700' :
+                      patient.status === 'DISCHARGED' ? 'bg-slate-100 text-slate-600' : 'bg-emerald-100 text-emerald-700'
+                  }`}>
                   {patient.status}
                 </span>
               </div>
@@ -180,16 +193,16 @@ export const PatientWorkspace: React.FC = () => {
             { id: 'documents', label: 'Documents', icon: <FileText size={14} className="shrink-0" />, activeClass: 'border-indigo-600 text-indigo-700 bg-indigo-50/20' },
             { id: 'encounters', label: 'Encounters', icon: <Calendar size={14} className="shrink-0" />, activeClass: 'border-emerald-600 text-emerald-700 bg-emerald-50/20' },
             { id: 'overview', label: 'Overview', icon: <Info size={14} className="shrink-0" />, activeClass: 'border-amber-600 text-amber-700 bg-amber-50/20' },
+            { id: 'discharge', label: 'Discharge Summary', icon: <FileCheck size={14} className="shrink-0" />, activeClass: 'border-teal-600 text-teal-700 bg-teal-50/20' },
             { id: 'audit', label: 'Audit Trail', icon: <ShieldCheck size={14} className="shrink-0" />, activeClass: 'border-purple-600 text-purple-700 bg-purple-50/20' }
           ].map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2.5 border-b-2 whitespace-nowrap transition-all flex items-center gap-2 rounded-t-xl font-extrabold ${
-                activeTab === tab.id 
-                  ? tab.activeClass 
+              className={`px-4 py-2.5 border-b-2 whitespace-nowrap transition-all flex items-center gap-2 rounded-t-xl font-extrabold ${activeTab === tab.id
+                  ? tab.activeClass
                   : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50/60 border-transparent'
-              }`}
+                }`}
             >
               {tab.icon}
               {tab.label}
@@ -200,37 +213,50 @@ export const PatientWorkspace: React.FC = () => {
         {/* Tab Content Display */}
         <div>
           {activeTab === 'timeline' && (
-            <TimelineTab 
-              patientId={patient.id} 
-              patientName={patient.name} 
+            <TimelineTab
+              patientId={patient.id}
+              patientName={patient.name}
               patientMrn={patient.hospital_patient_id}
-              encounters={encounters} 
+              encounters={encounters}
             />
           )}
 
           {activeTab === 'documents' && (
-            <DocumentsTab 
-              patientId={patient.id} 
-              encounters={encounters} 
+            <DocumentsTab
+              patientId={patient.id}
+              encounters={encounters}
             />
           )}
 
           {activeTab === 'encounters' && (
-            <EncountersTab 
-              patientId={patient.id} 
-              patientName={patient.name} 
+            <EncountersTab
+              patientId={patient.id}
+              patientName={patient.name}
               encounters={encounters}
               onRefresh={loadPatientData}
             />
           )}
 
           {activeTab === 'overview' && (
-            <OverviewTab 
-              patient={patient} 
+            <OverviewTab
+              patient={patient}
               medications={[]}
               completedOnboardingTasks={[]}
               onViewTrend={() => setActiveTab('timeline')}
               onViewMedications={() => setActiveTab('timeline')}
+            />
+          )}
+
+          {activeTab === 'discharge' && (
+            <DischargeTab
+              patientId={patient.id}
+              patientName={patient.name}
+              patientAge={patient.age || 65}
+              patientGender={patient.gender || 'Male'}
+              patient={patient}
+              encounters={encounters}
+              onRefreshPatient={loadPatientData}
+              onNavigateToAudit={() => setActiveTab('audit')}
             />
           )}
 

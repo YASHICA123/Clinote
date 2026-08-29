@@ -168,10 +168,20 @@ def test_audit_logs():
     token = login_res.json()["data"]["access_token"]
     headers = {"Authorization": f"Bearer {token}"}
 
+    # Test custom audit log creation
+    create_log_res = client.post("/api/v1/audit/logs", json={
+        "action": "DISCHARGE_SUMMARY_PRINTED",
+        "resource_type": "discharge_summary",
+        "resource_id": "test_patient_id",
+        "details": "Printed discharge summary test"
+    }, headers=headers)
+    assert create_log_res.status_code == 200
+    assert create_log_res.json()["data"]["action"] == "DISCHARGE_SUMMARY_PRINTED"
+
     # Fetch audit logs
     audit_res = client.get("/api/v1/audit/logs", headers=headers)
     assert audit_res.status_code == 200
     logs = audit_res.json()["data"]
     assert len(logs) > 0
     actions = [l["action"] for l in logs]
-    assert any(a in actions for a in ["PATIENT_CREATED", "DOCUMENT_FINALIZED", "CLINICAL_EVENT_CREATED"])
+    assert any(a in actions for a in ["PATIENT_CREATED", "DOCUMENT_FINALIZED", "CLINICAL_EVENT_CREATED", "DISCHARGE_SUMMARY_PRINTED"])

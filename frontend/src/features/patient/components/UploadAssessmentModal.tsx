@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  Upload, 
-  Sparkles, 
-  Check, 
-  Download, 
-  Plus, 
+import {
+  X,
+  Upload,
+  Sparkles,
+  Check,
+  Download,
+  Plus,
   FileText,
   AlertCircle,
   Eye,
@@ -35,11 +35,11 @@ interface UploadAssessmentModalProps {
   }) => void;
 }
 
-export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  patient, 
-  onSave 
+export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
+  isOpen,
+  onClose,
+  patient,
+  onSave
 }) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -49,7 +49,7 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
   const [age, setAge] = useState(patient.age?.toString() || '81');
   const [gender, setGender] = useState<'M' | 'F' | 'Other'>((patient.gender as 'M' | 'F' | 'Other') || 'M');
   const [consultant, setConsultant] = useState(patient.consultant || 'Dr. Deepak Bhasin');
-  
+
   const [pastHistory, setPastHistory] = useState<string[]>([
     'Hypertension',
     'Type 2 Diabetes Mellitus',
@@ -112,12 +112,11 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className={`bg-white rounded-3xl shadow-2xl border border-slate-100 w-full overflow-hidden transition-all duration-300 relative flex flex-col ${
-        step === 1 ? 'max-w-xl' : 'max-w-[90vw] md:max-w-6xl h-[90vh]'
-      }`}>
-        
+      <div className={`bg-white rounded-3xl shadow-2xl border border-slate-100 w-full overflow-hidden transition-all duration-300 relative flex flex-col ${step === 1 ? 'max-w-xl' : 'max-w-[90vw] md:max-w-6xl h-[90vh]'
+        }`}>
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-1.5 rounded-full transition-all z-10"
         >
@@ -128,8 +127,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
         <div className="p-6 pb-2 text-left">
           <h3 className="font-extrabold text-lg text-slate-900 leading-snug">Upload Initial Assessment</h3>
           <p className="text-[11px] text-slate-400 mt-1 font-medium">
-            {step === 1 
-              ? 'Upload the initial assessment document scanned from admission.' 
+            {step === 1
+              ? 'Upload the initial assessment document scanned from admission.'
               : 'Upload admission document to extract key clinical information.'}
           </p>
         </div>
@@ -160,7 +159,7 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                 <p className="font-bold text-xs text-slate-700">Drag and drop file here</p>
                 <p className="text-[10px] text-slate-400 font-medium">or</p>
               </div>
-              
+
               <Button variant="outline" size="sm" className="font-semibold text-emerald-700 border-emerald-200 hover:bg-emerald-50 bg-white">
                 Choose File
               </Button>
@@ -181,16 +180,16 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
             {/* Footer Actions */}
             <div className="flex justify-end gap-3 pt-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
-                className="font-semibold text-slate-500" 
+                className="font-semibold text-slate-500"
                 onClick={onClose}
               >
                 Cancel
               </Button>
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 size="sm"
                 onClick={handleUploadAndProcess}
                 loading={isProcessing}
@@ -255,7 +254,7 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
             {/* Scrollable contents grid */}
             <div className="flex-1 overflow-y-auto p-6 grid lg:grid-cols-10 gap-6 min-h-0 bg-slate-50/20">
-              
+
               {/* Left Column (Colspan 4): Document viewer mock */}
               <div className="lg:col-span-4 flex flex-col space-y-3 min-h-0">
                 <div className="flex justify-between items-center">
@@ -281,7 +280,7 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
                   {/* Mock PDF Content Area */}
                   <div className="flex-1 bg-white p-6 m-4 border border-slate-200 shadow-inner rounded overflow-y-auto text-[9px] text-slate-800 font-mono space-y-4 leading-normal select-text">
-                    
+
                     {/* Header */}
                     <div className="text-center border-b border-slate-300 pb-3">
                       <h5 className="font-black text-sm text-slate-900 tracking-wide uppercase">Initial Assessment</h5>
@@ -358,27 +357,27 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                 </div>
 
                 <div className="space-y-4 overflow-y-auto pr-1 flex-1">
-                  
+
                   {/* Patient Details */}
                   <div className="bg-white border border-slate-100 rounded-2xl p-4 space-y-3.5">
                     <h5 className="font-bold text-xs text-slate-900 border-b border-slate-50 pb-1.5 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
                       Patient Details
                     </h5>
-                    
+
                     <div className="grid md:grid-cols-4 gap-4">
                       <div className="md:col-span-2">
-                        <Input 
-                          label="Name" 
-                          value={name} 
-                          onChange={e => setName(e.target.value)} 
+                        <Input
+                          label="Name"
+                          value={name}
+                          onChange={e => setName(e.target.value)}
                           className="font-bold text-slate-800"
                         />
                       </div>
                       <div>
                         <label className="text-[10px] font-bold text-slate-500 block mb-1">Age</label>
-                        <select 
-                          value={age} 
+                        <select
+                          value={age}
                           onChange={e => setAge(e.target.value)}
                           className="w-full p-2 border border-slate-200 rounded-xl font-bold bg-white text-slate-800 h-9"
                         >
@@ -389,8 +388,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                       </div>
                       <div>
                         <label className="text-[10px] font-bold text-slate-500 block mb-1">Gender</label>
-                        <select 
-                          value={gender} 
+                        <select
+                          value={gender}
                           onChange={e => setGender(e.target.value as any)}
                           className="w-full p-2 border border-slate-200 rounded-xl font-bold bg-white text-slate-800 h-9"
                         >
@@ -403,10 +402,10 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <Input 
-                          label="Consultant" 
-                          value={consultant} 
-                          onChange={e => setConsultant(e.target.value)} 
+                        <Input
+                          label="Consultant"
+                          value={consultant}
+                          onChange={e => setConsultant(e.target.value)}
                           className="font-bold text-slate-800"
                         />
                         <span className="text-[9px] text-slate-400 mt-1 block">Bed ICU 45</span>
@@ -421,9 +420,9 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
                         Past History
                       </h5>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
+                      <Button
+                        variant="ghost"
+                        size="sm"
                         onClick={() => setShowAddCondition(true)}
                         className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50/50 p-1 flex items-center gap-1 font-bold"
                       >
@@ -434,15 +433,15 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
                     {showAddCondition && (
                       <div className="flex gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-150 items-center">
-                        <input 
-                          type="text" 
-                          placeholder="e.g. Asthma" 
+                        <input
+                          type="text"
+                          placeholder="e.g. Asthma"
                           value={newCondition}
                           onChange={e => setNewCondition(e.target.value)}
                           className="flex-1 p-1.5 border border-slate-200 rounded-lg text-xs outline-none bg-white"
                           onKeyDown={e => { if (e.key === 'Enter') handleAddCondition(); }}
                         />
-                         <Button size="sm" onClick={handleAddCondition} className="bg-emerald-700 text-white font-bold">Add</Button>
+                        <Button size="sm" onClick={handleAddCondition} className="bg-emerald-700 text-white font-bold">Add</Button>
                         <Button size="sm" variant="outline" onClick={() => setShowAddCondition(false)}>Cancel</Button>
                       </div>
                     )}
@@ -451,18 +450,16 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                       {['Hypertension', 'Type 2 Diabetes Mellitus', 'COPD (Known)', 'Dyslipidemia', 'Chronic Kidney Disease'].map((item) => {
                         const isChecked = pastHistory.includes(item);
                         return (
-                          <div 
+                          <div
                             key={item}
                             onClick={() => toggleHistoryItem(item)}
-                            className={`p-2.5 border rounded-xl flex items-center gap-2 cursor-pointer select-none transition-all ${
-                              isChecked 
-                                ? 'bg-emerald-50/40 border-emerald-200 text-emerald-800 font-semibold' 
+                            className={`p-2.5 border rounded-xl flex items-center gap-2 cursor-pointer select-none transition-all ${isChecked
+                                ? 'bg-emerald-50/40 border-emerald-200 text-emerald-800 font-semibold'
                                 : 'bg-white border-slate-100 text-slate-500 hover:bg-slate-50'
-                            }`}
+                              }`}
                           >
-                            <span className={`w-4 h-4 rounded-md border flex items-center justify-center shrink-0 ${
-                              isChecked ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300'
-                            }`}>
+                            <span className={`w-4 h-4 rounded-md border flex items-center justify-center shrink-0 ${isChecked ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300'
+                              }`}>
                               {isChecked && <Check size={10} strokeWidth={3} />}
                             </span>
                             <span className="text-[10px] truncate">{item}</span>
@@ -482,8 +479,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                     <div className="space-y-3.5">
                       <div>
                         <label className="text-[10px] font-bold text-slate-500 block mb-1">Diagnosis</label>
-                        <select 
-                          value={diagnosis} 
+                        <select
+                          value={diagnosis}
                           onChange={e => setDiagnosis(e.target.value)}
                           className="w-full p-2 border border-slate-200 rounded-xl font-bold bg-white text-slate-800 h-9"
                         >
@@ -493,9 +490,9 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                         </select>
                       </div>
 
-                      <Input 
-                        label="Suspected Cause" 
-                        value={suspectedCause} 
+                      <Input
+                        label="Suspected Cause"
+                        value={suspectedCause}
                         onChange={e => setSuspectedCause(e.target.value)}
                         className="font-semibold text-slate-700"
                       />
@@ -513,9 +510,9 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 block mb-1">Temp (°C)</label>
                         <div className="relative">
-                          <input 
-                            type="text" 
-                            value={vitalTemp} 
+                          <input
+                            type="text"
+                            value={vitalTemp}
                             onChange={e => setVitalTemp(e.target.value)}
                             className="w-full p-2 pr-6 border border-slate-200 rounded-xl font-bold text-slate-700 h-9 outline-none focus:border-emerald-500 text-xs"
                           />
@@ -526,9 +523,9 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 block mb-1">HR (bpm)</label>
                         <div className="relative">
-                          <input 
-                            type="text" 
-                            value={vitalHR} 
+                          <input
+                            type="text"
+                            value={vitalHR}
                             onChange={e => setVitalHR(e.target.value)}
                             className="w-full p-2 pr-6 border border-slate-200 rounded-xl font-bold text-slate-700 h-9 outline-none focus:border-emerald-500 text-xs"
                           />
@@ -539,9 +536,9 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 block mb-1">BP (mmHg)</label>
                         <div className="relative">
-                          <input 
-                            type="text" 
-                            value={vitalBP} 
+                          <input
+                            type="text"
+                            value={vitalBP}
                             onChange={e => setVitalBP(e.target.value)}
                             className="w-full p-2 pr-6 border border-slate-200 rounded-xl font-bold text-slate-700 h-9 outline-none focus:border-emerald-500 text-xs"
                           />
@@ -551,8 +548,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 block mb-1">SpO₂ (%)</label>
-                        <select 
-                          value={vitalSpO2} 
+                        <select
+                          value={vitalSpO2}
                           onChange={e => setVitalSpO2(e.target.value)}
                           className="w-full p-2 border border-slate-200 rounded-xl font-bold text-slate-700 h-9 outline-none bg-white text-xs"
                         >
@@ -564,8 +561,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
                       <div>
                         <label className="text-[10px] font-bold text-slate-400 block mb-1">RR (/min)</label>
-                        <select 
-                          value={vitalRR} 
+                        <select
+                          value={vitalRR}
                           onChange={e => setVitalRR(e.target.value)}
                           className="w-full p-2 border border-slate-200 rounded-xl font-bold text-slate-700 h-9 outline-none bg-white text-xs"
                         >
@@ -590,8 +587,8 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
 
             {/* Bottom Footer Actions for Step 2 */}
             <div className="p-4 border-t border-slate-100 bg-white flex justify-between items-center gap-4">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 size="sm"
                 onClick={onClose}
                 className="text-slate-500 font-semibold"
@@ -599,16 +596,16 @@ export const UploadAssessmentModal: React.FC<UploadAssessmentModalProps> = ({
                 Cancel
               </Button>
               <div className="flex gap-2">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   onClick={() => setStep(1)}
                   className="font-semibold text-slate-650"
                 >
                   Back
                 </Button>
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="sm"
                   onClick={handleSave}
                   className="bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold px-6"

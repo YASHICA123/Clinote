@@ -53,13 +53,13 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
 
   return (
     <div className="space-y-6 text-left">
-      
+
       {/* Vitals Dashboard Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
+
         {/* Left Side: Vitals Parameters Panel */}
         <div className="lg:col-span-4 space-y-3.5">
-          
+
           {/* Temperature */}
           <div className="flex justify-between items-center bg-white border border-slate-100 rounded-2xl p-4 shadow-sm relative overflow-hidden">
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-500"></div>
@@ -153,7 +153,7 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
         {/* Right Side: Vitals Chart Visualization */}
         <div className="lg:col-span-8">
           <Card className="p-5 border border-slate-100 flex flex-col h-full justify-between">
-            
+
             {/* Header controls for range selection */}
             <div className="flex justify-between items-center mb-4">
               <div className="space-y-0.5">
@@ -161,25 +161,25 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
                 <p className="text-[10px] text-slate-400 font-medium">Track vital signs over time</p>
               </div>
               <div className="flex items-center bg-slate-50 border border-slate-100 p-0.5 rounded-xl text-[9px] font-extrabold text-slate-500 select-none">
-                <button 
+                <button
                   onClick={() => setActiveRange('6h')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${activeRange === '6h' ? 'bg-white text-emerald-700 shadow-sm border border-slate-100/50' : 'hover:text-slate-850'}`}
                 >
                   6 Hours
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveRange('24h')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${activeRange === '24h' ? 'bg-emerald-50 text-emerald-700 shadow-sm border border-emerald-100' : 'hover:text-slate-850'}`}
                 >
                   24 Hours
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveRange('7d')}
                   className={`px-3 py-1.5 rounded-lg transition-all ${activeRange === '7d' ? 'bg-white text-emerald-700 shadow-sm border border-slate-100/50' : 'hover:text-slate-850'}`}
                 >
                   7 Days
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveRange('custom')}
                   className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 ${activeRange === 'custom' ? 'bg-white text-emerald-700 shadow-sm border border-slate-100/50' : 'hover:text-slate-850'}`}
                 >
@@ -196,18 +196,18 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
                   const y = getY(val, 0, 150);
                   return (
                     <g key={val}>
-                      <line 
-                        x1={paddingLeft} 
-                        y1={y} 
-                        x2={width - paddingRight} 
-                        y2={y} 
-                        stroke="#f1f5f9" 
-                        strokeWidth="1" 
+                      <line
+                        x1={paddingLeft}
+                        y1={y}
+                        x2={width - paddingRight}
+                        y2={y}
+                        stroke="#f1f5f9"
+                        strokeWidth="1"
                       />
-                      <text 
-                        x={paddingLeft - 10} 
-                        y={y + 3} 
-                        textAnchor="end" 
+                      <text
+                        x={paddingLeft - 10}
+                        y={y + 3}
+                        textAnchor="end"
                         className="text-[9px] fill-slate-400 font-bold font-sans"
                       >
                         {val}
@@ -222,26 +222,26 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
                   const linesText = dp.time.split('\n');
                   return (
                     <g key={i}>
-                      <line 
-                        x1={x} 
-                        y1={paddingTop} 
-                        x2={x} 
-                        y2={paddingTop + chartHeight} 
-                        stroke="#f8fafc" 
+                      <line
+                        x1={x}
+                        y1={paddingTop}
+                        x2={x}
+                        y2={paddingTop + chartHeight}
+                        stroke="#f8fafc"
                         strokeWidth="1"
                       />
-                      <text 
-                        x={x} 
-                        y={paddingTop + chartHeight + 15} 
-                        textAnchor="middle" 
+                      <text
+                        x={x}
+                        y={paddingTop + chartHeight + 15}
+                        textAnchor="middle"
                         className="text-[9px] fill-slate-500 font-bold font-sans"
                       >
                         {linesText[0]}
                       </text>
-                      <text 
-                        x={x} 
-                        y={paddingTop + chartHeight + 25} 
-                        textAnchor="middle" 
+                      <text
+                        x={x}
+                        y={paddingTop + chartHeight + 25}
+                        textAnchor="middle"
                         className="text-[8px] fill-slate-400 font-medium font-sans"
                       >
                         {linesText[1]}
@@ -284,7 +284,7 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
 
               {/* Tooltip Overlay */}
               {hoveredPointIndex !== null && (
-                <div 
+                <div
                   className="absolute bg-slate-900/95 text-white p-3.5 rounded-2xl shadow-xl border border-slate-800 text-[10px] pointer-events-none space-y-1.5 transition-all z-20"
                   style={{
                     left: `${Math.min(getX(hoveredPointIndex) - 60, width - 160)}px`,
@@ -297,16 +297,16 @@ export const VitalsTrendTab: React.FC<VitalsTrendTabProps> = () => {
                   <div className="grid grid-cols-2 gap-x-3 gap-y-1 font-semibold">
                     <span className="text-red-400">Temp:</span>
                     <span className="text-right">{dataPoints[hoveredPointIndex].temp} °C</span>
-                    
+
                     <span className="text-pink-400">HR:</span>
                     <span className="text-right">{dataPoints[hoveredPointIndex].hr} bpm</span>
-                    
+
                     <span className="text-blue-400">BP:</span>
                     <span className="text-right">{dataPoints[hoveredPointIndex].bpSystolic}/{dataPoints[hoveredPointIndex].bpDiastolic}</span>
-                    
+
                     <span className="text-purple-400">SpO₂:</span>
                     <span className="text-right">{dataPoints[hoveredPointIndex].spo2}%</span>
-                    
+
                     <span className="text-emerald-400">RR:</span>
                     <span className="text-right">{dataPoints[hoveredPointIndex].rr}/min</span>
                   </div>

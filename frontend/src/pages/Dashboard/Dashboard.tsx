@@ -3,11 +3,11 @@ import { useApp } from '../../context/AppContext';
 import { CreatePatientModal } from '../../features/patient/components/CreatePatientModal';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { 
-  Plus, 
+import {
+  Plus,
   Search,
-  Grid, 
-  List, 
+  Grid,
+  List,
   User,
   Users,
   Bed,
@@ -134,19 +134,19 @@ export const Dashboard: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             {/* Status Tabs */}
             <div className="flex items-center bg-slate-100/90 rounded-xl p-1 text-xs font-bold text-slate-500">
-              <button 
+              <button
                 onClick={() => setFilterTab('ALL')}
                 className={`px-3 py-1.5 rounded-lg transition-colors ${filterTab === 'ALL' ? 'bg-white text-slate-900 shadow-xs' : 'hover:text-slate-800'}`}
               >
                 All <span className="ml-1 text-[9px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded-full">{totalCount}</span>
               </button>
-              <button 
+              <button
                 onClick={() => setFilterTab('ICU')}
                 className={`px-3 py-1.5 rounded-lg transition-colors ${filterTab === 'ICU' ? 'bg-white text-slate-900 shadow-xs' : 'hover:text-slate-800'}`}
               >
                 ICU <span className="ml-1 text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded-full">{icuCount}</span>
               </button>
-              <button 
+              <button
                 onClick={() => setFilterTab('WARD')}
                 className={`px-3 py-1.5 rounded-lg transition-colors ${filterTab === 'WARD' ? 'bg-white text-slate-900 shadow-xs' : 'hover:text-slate-800'}`}
               >
@@ -156,13 +156,13 @@ export const Dashboard: React.FC = () => {
 
             {/* View Mode Toggle */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl text-slate-400">
-              <button 
+              <button
                 onClick={() => setViewMode('grid')}
                 className={`p-1.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white text-slate-800 shadow-xs' : 'hover:text-slate-600'}`}
               >
                 <Grid size={14} />
               </button>
-              <button 
+              <button
                 onClick={() => setViewMode('list')}
                 className={`p-1.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white text-slate-800 shadow-xs' : 'hover:text-slate-600'}`}
               >
@@ -171,7 +171,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             {/* Create Patient Button */}
-            <Button 
+            <Button
               onClick={() => setIsCreateModalOpen(true)}
               className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm shadow-emerald-600/20"
             >
@@ -194,11 +194,11 @@ export const Dashboard: React.FC = () => {
           /* Grid View */
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredPatients.map(patient => {
-              const statusColor = patient.status === 'ICU' 
-                ? 'bg-rose-50 text-rose-700 border-rose-200' 
+              const statusColor = patient.status === 'ICU'
+                ? 'bg-rose-50 text-rose-700 border-rose-200'
                 : patient.status === 'WARD'
-                ? 'bg-purple-50 text-purple-700 border-purple-200'
-                : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                  ? 'bg-purple-50 text-purple-700 border-purple-200'
+                  : 'bg-emerald-50 text-emerald-700 border-emerald-200';
 
               return (
                 <div
@@ -270,7 +270,7 @@ export const Dashboard: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {filteredPatients.map(patient => (
-                  <tr 
+                  <tr
                     key={patient.id}
                     onClick={() => handlePatientClick(patient.id)}
                     className="hover:bg-slate-50/80 cursor-pointer transition-colors"
@@ -281,9 +281,8 @@ export const Dashboard: React.FC = () => {
                     <td className="py-3 px-4 text-slate-700">{patient.department || 'General Medicine'}</td>
                     <td className="py-3 px-4 text-slate-700">{patient.bed_number || patient.bedNumber || '-'}</td>
                     <td className="py-3 px-4">
-                      <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase ${
-                        patient.status === 'ICU' ? 'bg-rose-100 text-rose-700' : 'bg-blue-100 text-blue-700'
-                      }`}>
+                      <span className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase ${patient.status === 'ICU' ? 'bg-rose-100 text-rose-700' : 'bg-blue-100 text-blue-700'
+                        }`}>
                         {patient.status}
                       </span>
                     </td>

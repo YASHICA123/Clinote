@@ -66,9 +66,9 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
   return (
     <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-xl overflow-hidden transition-all duration-300 relative flex flex-col max-h-[90vh]">
-        
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-1.5 rounded-full transition-all z-10"
         >
@@ -85,10 +85,10 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
 
         {/* Modal Scrollable Body */}
         <div className="p-6 pt-2 text-left space-y-5 overflow-y-auto flex-1">
-          
+
           {/* Listening State Widget */}
           <div className="w-full bg-[#f4faf7] border border-[#d8f0e5] rounded-3xl p-5 flex flex-col md:flex-row items-center gap-5">
-            
+
             {/* Pulsing Mic Button */}
             <button
               onClick={handleMicClick}
@@ -97,9 +97,8 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
               {isListening && (
                 <div className="absolute inset-0 rounded-full bg-emerald-100/60 animate-ping opacity-75 w-16 h-16 -m-2"></div>
               )}
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center relative shadow-md transition-all ${
-                isListening ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
-              }`}>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center relative shadow-md transition-all ${isListening ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
+                }`}>
                 <Mic size={20} />
               </div>
             </button>
@@ -118,11 +117,10 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
               {/* simulated waveform */}
               <div className="flex gap-[3px] items-center justify-center md:justify-start h-6 w-full overflow-hidden">
                 {waveformHeights.map((h, i) => (
-                  <div 
-                    key={i} 
-                    className={`rounded-full w-[3px] transition-all duration-150 ${
-                      isListening ? 'bg-emerald-500' : 'bg-slate-300'
-                    }`} 
+                  <div
+                    key={i}
+                    className={`rounded-full w-[3px] transition-all duration-150 ${isListening ? 'bg-emerald-500' : 'bg-slate-300'
+                      }`}
                     style={{ height: `${isListening ? h : 4}px` }}
                   />
                 ))}
@@ -144,7 +142,7 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
             </h4>
 
             <div className="border border-slate-100 bg-slate-50/20 rounded-3xl p-5 space-y-4 text-xs">
-              
+
               {isEditing ? (
                 // Editable Fields
                 <div className="space-y-4">
@@ -252,16 +250,16 @@ export const AddProgressNoteModal: React.FC<AddProgressNoteModalProps> = ({
 
         {/* Modal Footer Controls */}
         <div className="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-end gap-3 shrink-0">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="sm"
             onClick={onClose}
             className="font-bold text-slate-500 px-4 py-2 hover:bg-slate-50"
           >
             Cancel
           </Button>
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             size="sm"
             onClick={handleSave}
             className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2"

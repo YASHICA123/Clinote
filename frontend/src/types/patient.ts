@@ -30,6 +30,9 @@ export interface Patient {
   };
   suspectedCause?: string;
   pastHistory?: string[];
+  chiefComplaints?: string;
+  presentingComplaints?: string;
+  hospitalCourse?: string;
   created_at?: string;
   updated_at?: string;
 }

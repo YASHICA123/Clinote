@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  Activity, 
-  Pill, 
-  FileText, 
+import {
+  Activity,
+  Pill,
+  FileText,
   Info,
   CheckCircle2,
   TrendingUp
@@ -64,10 +64,10 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
   const displayMeds = medications.length > 0
     ? medications
     : [
-        { id: '1', name: 'Piperacillin + Tazobactam', dosage: '4.5 g IV', frequency: 'Every 8 hours' },
-        { id: '2', name: 'Azithromycin', dosage: '500 mg IV', frequency: 'Once daily' },
-        { id: '3', name: 'Linezolid', dosage: '600 mg IV', frequency: 'Every 12 hours' },
-      ] as Medication[];
+      { id: '1', name: 'Piperacillin + Tazobactam', dosage: '4.5 g IV', frequency: 'Every 8 hours' },
+      { id: '2', name: 'Azithromycin', dosage: '500 mg IV', frequency: 'Once daily' },
+      { id: '3', name: 'Linezolid', dosage: '600 mg IV', frequency: 'Every 12 hours' },
+    ] as Medication[];
 
   return (
     <div className="space-y-5 text-left">

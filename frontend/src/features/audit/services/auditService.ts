@@ -14,5 +14,19 @@ export const auditService = {
     } catch {
       return [];
     }
+  },
+
+  createAuditLog: async (payload: {
+    action: string;
+    resource_type: string;
+    resource_id: string;
+    details?: string;
+  }): Promise<any> => {
+    try {
+      return await http.post(`${config.apiUrl}/audit/logs`, payload);
+    } catch (err) {
+      console.warn('Failed to record audit log:', err);
+      return null;
+    }
   }
 };

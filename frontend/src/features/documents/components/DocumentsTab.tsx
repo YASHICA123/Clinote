@@ -4,17 +4,17 @@ import type { ClinicalDocument, Encounter } from '../../../types';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
 import { Loader } from '../../../components/ui/Loader';
-import { 
-  FileText, 
-  Plus, 
-  Lock, 
-  Edit3, 
-  CheckCircle2, 
-  Clock, 
-  User, 
-  AlertCircle, 
-  X, 
-  Printer 
+import {
+  FileText,
+  Plus,
+  Lock,
+  Edit3,
+  CheckCircle2,
+  Clock,
+  User,
+  AlertCircle,
+  X,
+  Printer
 } from 'lucide-react';
 
 interface DocumentsTabProps {
@@ -28,7 +28,7 @@ export const DocumentsTab: React.FC<DocumentsTabProps> = ({ patientId, encounter
   const [selectedDoc, setSelectedDoc] = useState<ClinicalDocument | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  
+
   // Editor form state
   const [docType, setDocType] = useState('DISCHARGE_SUMMARY');
   const [docTitle, setDocTitle] = useState('');
@@ -64,7 +64,7 @@ export const DocumentsTab: React.FC<DocumentsTabProps> = ({ patientId, encounter
     setDocType('DISCHARGE_SUMMARY');
     setDocTitle('Discharge Summary');
     setDocContent(
-`HOSPITAL COURSE:
+      `HOSPITAL COURSE:
 Patient admitted for ... Responded favorably to therapy.
 
 DISCHARGE DIAGNOSES:
@@ -190,20 +190,18 @@ FOLLOW-UP & INSTRUCTIONS:
                     setIsCreating(false);
                     setIsEditing(false);
                   }}
-                  className={`p-4 rounded-2xl border transition-all cursor-pointer select-none space-y-2 ${
-                    isSelected
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer select-none space-y-2 ${isSelected
                       ? 'bg-blue-50/50 border-blue-300 ring-2 ring-blue-500/10 shadow-sm'
                       : 'bg-white hover:bg-slate-50/70 border-slate-200'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <h4 className="text-xs font-bold text-slate-800 leading-snug">{doc.title}</h4>
                     <span
-                      className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1 shrink-0 ${
-                        isFinal
+                      className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1 shrink-0 ${isFinal
                           ? 'bg-emerald-100 text-emerald-700'
                           : 'bg-amber-100 text-amber-700'
-                      }`}
+                        }`}
                     >
                       {isFinal ? <Lock size={10} /> : <Edit3 size={10} />}
                       {doc.status}
@@ -328,11 +326,10 @@ FOLLOW-UP & INSTRUCTIONS:
                   <div className="flex items-center gap-2">
                     <h3 className="text-base font-extrabold text-slate-900">{selectedDoc.title}</h3>
                     <span
-                      className={`text-[9px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1 ${
-                        selectedDoc.status === 'FINAL'
+                      className={`text-[9px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1 ${selectedDoc.status === 'FINAL'
                           ? 'bg-emerald-100 text-emerald-700'
                           : 'bg-amber-100 text-amber-700'
-                      }`}
+                        }`}
                     >
                       {selectedDoc.status === 'FINAL' ? <Lock size={10} /> : <Edit3 size={10} />}
                       {selectedDoc.status}

@@ -49,7 +49,7 @@ export const Login: React.FC = () => {
       {/* Main Container */}
       <div className="flex-1 flex items-center justify-center p-6 md:p-12">
         <div className="w-full max-w-5xl grid md:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Panel: Information & Branding */}
           <div className="space-y-8 text-left hidden md:block">
             <div className="flex items-center gap-3 cursor-pointer">
@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
           {/* Right Panel: Login Card */}
           <div className="flex justify-center md:justify-end">
             <div className="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-slate-100/60 border border-slate-200 p-8 md:p-10 space-y-6">
-              
+
               {/* Header inside Card */}
               <div className="text-center space-y-2">
                 <div className="inline-flex p-3 bg-emerald-50 rounded-2xl mb-1 text-emerald-600">

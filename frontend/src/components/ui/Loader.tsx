@@ -6,10 +6,10 @@ interface LoaderProps {
   fullscreen?: boolean;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ 
-  size = 'md', 
-  label = 'Loading clinical data...', 
-  fullscreen = false 
+export const Loader: React.FC<LoaderProps> = ({
+  size = 'md',
+  label = 'Loading clinical data...',
+  fullscreen = false
 }) => {
   const spinnerSizes = {
     sm: 'w-4 h-4 border-2',
@@ -17,7 +17,7 @@ export const Loader: React.FC<LoaderProps> = ({
     lg: 'w-12 h-12 border-4'
   };
 
-  const containerStyles = fullscreen 
+  const containerStyles = fullscreen
     ? 'fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center'
     : 'w-full py-12 flex flex-col items-center justify-center';
 

@@ -2,13 +2,13 @@ import React from 'react';
 import { Card } from '../../../components/ui/Card';
 import { Badge } from '../../../components/ui/Badge';
 import { Info } from 'lucide-react';
-import { 
-  Table, 
-  TableHeader, 
-  TableBody, 
-  TableRow, 
-  TableHead, 
-  TableCell 
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell
 } from '../../../components/ui/Table';
 
 import { mockMedicationTabItems as medications } from '../../../mock/medications';
@@ -37,8 +37,8 @@ export const MedicationTab: React.FC<MedicationTabProps> = () => {
       }
 
       blocks.push(
-        <div 
-          key={d} 
+        <div
+          key={d}
           className={`w-6 h-6 rounded-lg border text-[9px] flex items-center justify-center font-bold tracking-tighter ${bgStyle}`}
           title={`${med.name} - Day ${d}`}
         >
@@ -56,7 +56,7 @@ export const MedicationTab: React.FC<MedicationTabProps> = () => {
   return (
     <div className="space-y-6 text-left">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
+
         {/* Left Column: Medications Table (col span 8) */}
         <div className="lg:col-span-8 space-y-4">
           <div className="space-y-1">
@@ -117,13 +117,13 @@ export const MedicationTab: React.FC<MedicationTabProps> = () => {
 
         {/* Right Column: Timeline & Summary Widgets (col span 4) */}
         <div className="lg:col-span-4 space-y-4">
-          
+
           {/* Antibiotic Timeline Card */}
           <Card className="p-5 border border-slate-100 rounded-3xl shadow-sm text-left space-y-4">
             <h4 className="font-extrabold text-xs text-slate-900 border-b border-slate-50 pb-3">
               Antibiotic Timeline
             </h4>
-            
+
             <div className="space-y-4">
               {medications.map(med => (
                 <div key={med.id} className="space-y-1.5">

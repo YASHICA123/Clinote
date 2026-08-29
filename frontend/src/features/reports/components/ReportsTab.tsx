@@ -37,7 +37,7 @@ export const ReportsTab: React.FC<ReportsTabProps> = ({ patientId }) => {
 
   return (
     <div className="grid md:grid-cols-5 gap-6 text-left">
-      
+
       {/* Reports List Column */}
       <div className="md:col-span-2 space-y-3">
         <h4 className="text-xs font-extrabold text-slate-800 tracking-wide uppercase">Reports Index</h4>
@@ -47,20 +47,18 @@ export const ReportsTab: React.FC<ReportsTabProps> = ({ patientId }) => {
           ) : (
             reports.map(rep => {
               const isSelected = selectedReport?.id === rep.id;
-              
+
               return (
                 <div
                   key={rep.id}
                   onClick={() => setSelectedReport(rep)}
-                  className={`p-3.5 border rounded-2xl cursor-pointer transition-all duration-200 flex gap-3 items-start relative overflow-hidden ${
-                    isSelected 
-                      ? 'border-emerald-500 bg-emerald-50/5 shadow-sm shadow-emerald-500/5' 
+                  className={`p-3.5 border rounded-2xl cursor-pointer transition-all duration-200 flex gap-3 items-start relative overflow-hidden ${isSelected
+                      ? 'border-emerald-500 bg-emerald-50/5 shadow-sm shadow-emerald-500/5'
                       : 'border-slate-100 hover:border-slate-200 bg-white'
-                  }`}
+                    }`}
                 >
-                  <div className={`p-2.5 rounded-xl shrink-0 ${
-                    isSelected ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-50 text-slate-400'
-                  }`}>
+                  <div className={`p-2.5 rounded-xl shrink-0 ${isSelected ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-50 text-slate-400'
+                    }`}>
                     <FileText size={16} />
                   </div>
                   <div className="min-w-0 space-y-0.5 flex-1 pr-4">

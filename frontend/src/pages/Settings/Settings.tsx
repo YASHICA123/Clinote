@@ -3,12 +3,12 @@ import { useApp } from '../../context/AppContext';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
-import { 
-  User, 
-  Settings as SettingsIcon, 
-  Database, 
-  Bell, 
-  Check, 
+import {
+  User,
+  Settings as SettingsIcon,
+  Database,
+  Bell,
+  Check,
   Server,
   Lock
 } from 'lucide-react';
@@ -48,7 +48,7 @@ export const Settings: React.FC = () => {
       </div>
 
       <form onSubmit={handleSave} className="space-y-6">
-        
+
         {/* Clinician Profile */}
         <Card>
           <CardHeader>
@@ -113,7 +113,7 @@ export const Settings: React.FC = () => {
                 onChange={e => setApiUrl(e.target.value)}
                 placeholder="http://localhost:8000"
               />
-              
+
               <div className="grid md:grid-cols-2 gap-4">
                 <Input
                   label="Supabase Endpoint URL"
@@ -170,9 +170,9 @@ export const Settings: React.FC = () => {
               Settings saved successfully!
             </span>
           )}
-          <Button 
-            type="submit" 
-            variant="primary" 
+          <Button
+            type="submit"
+            variant="primary"
             loading={saving}
             className="px-6 bg-emerald-700 hover:bg-emerald-800"
           >

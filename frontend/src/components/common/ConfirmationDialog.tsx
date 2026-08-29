@@ -42,11 +42,10 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
             }}
             variant={type === 'danger' ? 'danger' : 'primary'}
             size="sm"
-            className={`font-bold text-[10px] rounded-xl px-4 py-2 text-white shadow-sm ${
-              type === 'danger'
+            className={`font-bold text-[10px] rounded-xl px-4 py-2 text-white shadow-sm ${type === 'danger'
                 ? 'bg-red-500 hover:bg-red-650'
                 : 'bg-emerald-600 hover:bg-emerald-650'
-            }`}
+              }`}
           >
             {confirmText}
           </Button>

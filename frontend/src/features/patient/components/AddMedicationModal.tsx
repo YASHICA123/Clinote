@@ -14,10 +14,10 @@ interface AddMedicationModalProps {
   onSave: (meds: MedicationItem[]) => void;
 }
 
-export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  onSave 
+export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
+  isOpen,
+  onClose,
+  onSave
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [detectedMeds, setDetectedMeds] = useState<MedicationItem[]>([
@@ -36,7 +36,7 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
 
     // Simulate animated waveform while "listening"
     const interval = setInterval(() => {
-      setWaveformHeights(prev => 
+      setWaveformHeights(prev =>
         prev.map(() => Math.floor(Math.random() * 20) + 4)
       );
     }, 150);
@@ -69,9 +69,9 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
   return (
     <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-lg overflow-hidden transition-all duration-300 relative flex flex-col">
-        
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-1.5 rounded-full transition-all z-10"
         >
@@ -88,10 +88,10 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-6 pt-2 text-left space-y-6">
-          
+
           {/* Listening Voice Widget */}
           <div className="w-full bg-[#f4faf7] border border-[#d8f0e5] rounded-3xl p-5 flex flex-col items-center justify-center text-center space-y-4">
-            
+
             <div className="relative flex items-center justify-center">
               {/* Outer rings animation */}
               <div className="absolute inset-0 rounded-full bg-emerald-100/50 animate-ping opacity-75 w-16 h-16 -m-2"></div>
@@ -108,9 +108,9 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
             {/* Simulated audio waveform */}
             <div className="flex gap-[3px] items-center justify-center h-8 w-full max-w-[280px]">
               {waveformHeights.map((h, i) => (
-                <div 
-                  key={i} 
-                  className="bg-emerald-500 rounded-full w-[3px] transition-all duration-150" 
+                <div
+                  key={i}
+                  className="bg-emerald-500 rounded-full w-[3px] transition-all duration-150"
                   style={{ height: `${h * 1.5}px` }}
                 />
               ))}
@@ -126,9 +126,9 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
                   {detectedMeds.length}
                 </span>
               </h4>
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={handleEditToggle}
                 className="text-slate-500 hover:text-slate-800 border-slate-200 bg-white hover:bg-slate-50 flex items-center gap-1 font-semibold"
               >
@@ -141,26 +141,26 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
               {detectedMeds.map((med, index) => (
                 <div key={index} className="py-2.5 first:pt-0 last:pb-0 flex items-center gap-4">
                   <span className="text-[11px] font-bold text-slate-400 w-4">{index + 1}.</span>
-                  
+
                   {isEditing ? (
                     <div className="flex-1 grid grid-cols-3 gap-2">
-                      <input 
-                        type="text" 
-                        value={med.name} 
+                      <input
+                        type="text"
+                        value={med.name}
                         onChange={e => handleFieldChange(index, 'name', e.target.value)}
                         placeholder="Medication name"
                         className="p-1 border border-slate-200 rounded text-[10px] outline-none"
                       />
-                      <input 
-                        type="text" 
-                        value={med.dosage} 
+                      <input
+                        type="text"
+                        value={med.dosage}
                         onChange={e => handleFieldChange(index, 'dosage', e.target.value)}
                         placeholder="Dosage"
                         className="p-1 border border-slate-200 rounded text-[10px] outline-none"
                       />
-                      <input 
-                        type="text" 
-                        value={med.frequency} 
+                      <input
+                        type="text"
+                        value={med.frequency}
                         onChange={e => handleFieldChange(index, 'frequency', e.target.value)}
                         placeholder="Frequency"
                         className="p-1 border border-slate-200 rounded text-[10px] outline-none"
@@ -180,9 +180,9 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
             </div>
 
             {isEditing && (
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={handleAddMedication}
                 className="w-full border-dashed border-slate-200 text-slate-500 text-[10px] font-semibold mt-2"
               >
@@ -193,16 +193,16 @@ export const AddMedicationModal: React.FC<AddMedicationModalProps> = ({
 
           {/* Footer Actions */}
           <div className="flex justify-end gap-3 pt-2">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="sm"
-              className="font-semibold text-slate-500" 
+              className="font-semibold text-slate-500"
               onClick={onClose}
             >
               Cancel
             </Button>
-            <Button 
-              variant="primary" 
+            <Button
+              variant="primary"
               size="sm"
               onClick={handleSave}
               className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold flex items-center gap-1"

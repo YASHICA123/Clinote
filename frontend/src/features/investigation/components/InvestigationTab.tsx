@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Card } from '../../../components/ui/Card';
 import { Badge } from '../../../components/ui/Badge';
 import { Button } from '../../../components/ui/Button';
-import { 
-  Download, 
-  MoreHorizontal, 
-  ZoomIn, 
-  ZoomOut, 
-  RotateCw, 
-  RotateCcw, 
-  Maximize2, 
-  Info, 
-  ChevronDown, 
+import {
+  Download,
+  MoreHorizontal,
+  ZoomIn,
+  ZoomOut,
+  RotateCw,
+  RotateCcw,
+  Maximize2,
+  Info,
+  ChevronDown,
   Calendar,
   Image as ImageIcon
 } from 'lucide-react';
@@ -40,10 +40,10 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
 
   return (
     <div className="space-y-5 text-left">
-      
+
       {/* 2-Column Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        
+
         {/* Left Column: Scrollable List (Col span 4) */}
         <div className="lg:col-span-4 space-y-3.5">
           <div className="space-y-1">
@@ -70,16 +70,14 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
               <div
                 key={inv.id}
                 onClick={() => setSelectedId(inv.id)}
-                className={`p-4 border rounded-2xl cursor-pointer transition-all flex items-center justify-between shadow-sm select-none ${
-                  selectedId === inv.id 
-                    ? 'border-purple-300 bg-purple-50/20 ring-1 ring-purple-100' 
+                className={`p-4 border rounded-2xl cursor-pointer transition-all flex items-center justify-between shadow-sm select-none ${selectedId === inv.id
+                    ? 'border-purple-300 bg-purple-50/20 ring-1 ring-purple-100'
                     : 'border-slate-100 bg-white hover:border-slate-250'
-                }`}
+                  }`}
               >
                 <div className="flex gap-3 items-center">
-                  <div className={`p-2 rounded-xl shrink-0 ${
-                    selectedId === inv.id ? 'bg-purple-100 text-purple-700' : 'bg-slate-100 text-slate-400'
-                  }`}>
+                  <div className={`p-2 rounded-xl shrink-0 ${selectedId === inv.id ? 'bg-purple-100 text-purple-700' : 'bg-slate-100 text-slate-400'
+                    }`}>
                     <ImageIcon size={14} />
                   </div>
                   <div className="space-y-0.5">
@@ -109,7 +107,7 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
         {/* Right Column: Detailed Viewer (Col span 8) */}
         <div className="lg:col-span-8">
           <Card className="border border-slate-100 p-5 rounded-3xl space-y-4">
-            
+
             {/* Viewer Header */}
             <div className="flex justify-between items-start border-b border-slate-50 pb-3.5">
               <div className="space-y-0.5">
@@ -127,8 +125,8 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   className="text-slate-600 border-slate-200 bg-white hover:bg-slate-50 font-bold flex items-center gap-1 text-[10px] rounded-xl px-3.5"
                 >
@@ -143,21 +141,21 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
 
             {/* Viewer Body Grid */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-              
+
               {/* Left Part: Interactive X-ray Image (Col span 7) */}
               <div className="md:col-span-7 flex flex-col items-center gap-4 bg-slate-950 p-4 rounded-3xl border border-slate-800 shadow-inner relative overflow-hidden">
                 <div className="w-full aspect-[4/3] flex items-center justify-center overflow-hidden bg-slate-900 rounded-2xl relative select-none">
                   {/* Styled High Quality Radiology Image */}
-                  <img 
-                    src={selectedInv.imageUrl} 
-                    alt={selectedInv.testName} 
+                  <img
+                    src={selectedInv.imageUrl}
+                    alt={selectedInv.testName}
                     className="w-full h-full object-cover transition-all duration-200"
                     style={{
                       transform: `scale(${zoomLevel / 100}) rotate(${rotation}deg)`,
                       filter: 'contrast(1.4) brightness(0.8) grayscale(1)'
                     }}
                   />
-                  
+
                   {/* Anatomical Marker Overlay */}
                   <div className="absolute top-3 right-4 font-black text-sm text-white/55 font-mono select-none">
                     R
@@ -179,8 +177,8 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
                     <button onClick={handleRotateRight} className="p-1 border border-slate-800 rounded bg-slate-900 hover:bg-slate-850 hover:text-white cursor-pointer"><RotateCw size={11} /></button>
                   </div>
 
-                  <button 
-                    onClick={handleReset} 
+                  <button
+                    onClick={handleReset}
                     className="flex items-center gap-1 px-2.5 py-1 bg-slate-900 border border-slate-800 rounded hover:bg-slate-850 hover:text-white cursor-pointer"
                   >
                     <Maximize2 size={10} />
@@ -191,7 +189,7 @@ export const InvestigationTab: React.FC<InvestigationTabProps> = () => {
 
               {/* Right Part: Findings and AI Summary (Col span 5) */}
               <div className="md:col-span-5 space-y-4">
-                
+
                 {/* Findings Section */}
                 <div className="space-y-1.5">
                   <h5 className="font-extrabold text-xs text-slate-850">Findings</h5>

@@ -11,7 +11,7 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const baseStyles = 'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide transition-colors duration-200';
-  
+
   const variants = {
     default: 'bg-slate-900 text-white',
     secondary: 'bg-slate-100 text-slate-700',

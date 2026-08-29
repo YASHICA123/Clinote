@@ -4,13 +4,13 @@ import type { TimelineEvent, Encounter } from '../../../types';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
 import { Loader } from '../../../components/ui/Loader';
-import { 
-  Stethoscope, 
-  Pill, 
-  Activity, 
-  CheckCircle2, 
-  ChevronDown, 
-  ChevronUp, 
+import {
+  Stethoscope,
+  Pill,
+  Activity,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
   Clock,
   Plus,
   User,
@@ -193,7 +193,7 @@ export const TimelineTab: React.FC<TimelineTabProps> = ({
 
                 {/* Event Card */}
                 <Card className="hover:border-slate-300 transition-all duration-150 overflow-hidden shadow-xs">
-                  <div 
+                  <div
                     onClick={() => toggleExpand(event.id)}
                     className="p-4 flex items-start justify-between cursor-pointer select-none"
                   >

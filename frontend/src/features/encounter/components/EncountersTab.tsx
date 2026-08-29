@@ -63,22 +63,20 @@ export const EncountersTab: React.FC<EncountersTabProps> = ({
             return (
               <Card
                 key={enc.id}
-                className={`p-5 transition-all space-y-4 ${
-                  isActive ? 'border-blue-300 ring-2 ring-blue-500/10 shadow-sm bg-gradient-to-r from-blue-50/20 to-white' : ''
-                }`}
+                className={`p-5 transition-all space-y-4 ${isActive ? 'border-blue-300 ring-2 ring-blue-500/10 shadow-sm bg-gradient-to-r from-blue-50/20 to-white' : ''
+                  }`}
               >
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <h4 className="text-sm font-extrabold text-slate-900">{enc.department}</h4>
                       <span
-                        className={`text-[9px] px-2.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider ${
-                          isActive
+                        className={`text-[9px] px-2.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider ${isActive
                             ? 'bg-blue-100 text-blue-700'
                             : enc.status === 'DISCHARGED'
-                            ? 'bg-emerald-100 text-emerald-700'
-                            : 'bg-slate-100 text-slate-600'
-                        }`}
+                              ? 'bg-emerald-100 text-emerald-700'
+                              : 'bg-slate-100 text-slate-600'
+                          }`}
                       >
                         {enc.status}
                       </span>

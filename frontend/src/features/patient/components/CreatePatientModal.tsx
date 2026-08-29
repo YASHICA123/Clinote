@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { patientService, type ConfirmPatientResponse, type PatientAdmissionData } from '../services/patientService';
 import { Button } from '../../../components/ui/Button';
-import { 
-  X, 
-  Upload, 
-  CheckCircle2, 
-  AlertCircle, 
-  ArrowLeft, 
-  User, 
-  Building2, 
+import {
+  X,
+  Upload,
+  CheckCircle2,
+  AlertCircle,
+  ArrowLeft,
+  User,
+  Building2,
   AlertTriangle,
   Loader2,
   FileCheck,
@@ -42,7 +42,7 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
   const [uploadId, setUploadId] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState(false);
-  
+
   // Duplicate state
   const [duplicateInfo, setDuplicateInfo] = useState<ConfirmPatientResponse['existing_patient'] | null>(null);
 
@@ -152,7 +152,7 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
       if (res && res.status === 'processed') {
         setUploadId(res.upload_id);
         const p: PatientAdmissionData = res.patient_data || {};
-        
+
         setFullName(p.full_name || '');
         setUhid(p.uhid || '');
         setDob(p.date_of_birth || '');
@@ -209,7 +209,7 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
 
     try {
       const res = await patientService.confirmPatient(uploadId, payload);
-      
+
       if (res.status === 'duplicate' && res.existing_patient) {
         setDuplicateInfo(res.existing_patient);
         setConfirming(false);
@@ -239,7 +239,7 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-100 flex flex-col max-h-[90vh] text-left">
-        
+
         {/* Modal Header */}
         <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
@@ -285,11 +285,10 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
                 onDragOver={handleDrag}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
-                className={`border-2 border-dashed rounded-3xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
-                  dragActive 
-                    ? 'border-emerald-500 bg-emerald-50/50 scale-[0.99]' 
+                className={`border-2 border-dashed rounded-3xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${dragActive
+                    ? 'border-emerald-500 bg-emerald-50/50 scale-[0.99]'
                     : 'border-slate-200 bg-slate-50/60 hover:bg-slate-50 hover:border-emerald-400'
-                }`}
+                  }`}
               >
                 <input
                   ref={fileInputRef}
@@ -398,7 +397,7 @@ export const CreatePatientModal: React.FC<CreatePatientModalProps> = ({
           {/* ------------------------------------------------------------- */}
           {step === 'review' && (
             <form onSubmit={handleConfirm} className="space-y-6">
-              
+
               {/* Duplicate Alert Card (if detected) */}
               {duplicateInfo && (
                 <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl space-y-3 animate-fadeIn">

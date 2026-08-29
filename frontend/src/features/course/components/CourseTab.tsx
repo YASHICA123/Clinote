@@ -3,12 +3,12 @@ import { courseService } from '../services/courseService';
 import type { CourseEntry } from '../../../types';
 import { Card } from '../../../components/ui/Card';
 import { Loader } from '../../../components/ui/Loader';
-import { 
-  Heart, 
-  Activity, 
-  Wind, 
-  Thermometer, 
-  ChevronDown, 
+import {
+  Heart,
+  Activity,
+  Wind,
+  Thermometer,
+  ChevronDown,
   Info
 } from 'lucide-react';
 import { Badge } from '../../../components/ui/Badge';
@@ -79,7 +79,7 @@ export const CourseTab: React.FC<CourseTabProps> = ({ patientId }) => {
   return (
     <div className="space-y-6 text-left">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
+
         {/* Left Column: Timeline list of events (col span 8) */}
         <div className="lg:col-span-8 space-y-4">
           <div className="space-y-1">
@@ -89,7 +89,7 @@ export const CourseTab: React.FC<CourseTabProps> = ({ patientId }) => {
 
           {/* Timeline Nodes */}
           <div className="relative pl-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100 space-y-5 pt-3">
-            
+
             {/* Dynamic SOAP entries added via AddProgressNoteModal */}
             {entries.map((entry) => {
               const styles = getEventStyle('update');
@@ -208,7 +208,7 @@ export const CourseTab: React.FC<CourseTabProps> = ({ patientId }) => {
 
         {/* Right Column: Summaries & KPI Panels (col span 4) */}
         <div className="lg:col-span-4 space-y-4">
-          
+
           {/* Course Summary Card */}
           <Card className="p-5 border border-slate-100 rounded-3xl shadow-sm text-left">
             <h4 className="font-extrabold text-xs text-slate-900 border-b border-slate-50 pb-3 mb-3.5">

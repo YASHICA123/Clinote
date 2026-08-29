@@ -58,11 +58,10 @@ export const TabsTrigger: React.FC<{
     <button
       type="button"
       onClick={() => context.setActiveTab(value)}
-      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${
-        isActive 
-          ? 'bg-white text-slate-900 shadow-sm' 
+      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${isActive
+          ? 'bg-white text-slate-900 shadow-sm'
           : 'text-slate-500 hover:text-slate-900 hover:bg-white/40'
-      } ${className}`}
+        } ${className}`}
     >
       {children}
     </button>

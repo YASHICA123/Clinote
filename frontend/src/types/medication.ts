@@ -8,5 +8,6 @@ export interface Medication {
   status: 'Active' | 'Discontinued';
   startDate: string;
   endDate?: string;
+  duration?: string;
   prescriber?: string;
 }

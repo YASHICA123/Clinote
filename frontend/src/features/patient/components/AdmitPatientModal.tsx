@@ -3,18 +3,18 @@ import { useApp } from '../../../context/AppContext';
 import { patientService } from '../services/patientService';
 import { Button } from '../../../components/ui/Button';
 import { StatusBadge } from '../../../components/ui/StatusBadge';
-import { 
-  X, 
-  Upload, 
-  Camera, 
-  FolderOpen, 
-  ShieldCheck, 
-  Loader2, 
-  CheckCircle2, 
-  User, 
-  Bed, 
-  Calendar, 
-  Building 
+import {
+  X,
+  Upload,
+  Camera,
+  FolderOpen,
+  ShieldCheck,
+  Loader2,
+  CheckCircle2,
+  User,
+  Bed,
+  Calendar,
+  Building
 } from 'lucide-react';
 
 interface AdmitPatientModalProps {
@@ -26,7 +26,7 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
   const { setActivePatientId, setCurrentPage, refreshPatients } = useApp();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
-  
+
   // Progress sub-steps for Step 2
   const [extractionSubStep, setExtractionSubStep] = useState<1 | 2 | 3 | 4>(1);
 
@@ -56,7 +56,7 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
     const timer1 = setTimeout(() => setExtractionSubStep(2), 800);
     const timer2 = setTimeout(() => setExtractionSubStep(3), 1600);
     const timer3 = setTimeout(() => setExtractionSubStep(4), 2400);
-    
+
     const timerFinish = setTimeout(async () => {
       // Admit patient in service
       try {
@@ -96,9 +96,9 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
   return (
     <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-lg overflow-hidden transition-all duration-300 relative">
-        
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-1.5 rounded-full transition-all"
         >
@@ -120,7 +120,7 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
             </div>
 
             {/* Drag & Drop Area */}
-            <div 
+            <div
               onClick={() => handleFileUpload('admission_sheet.pdf')}
               className="w-full border-2 border-dashed border-slate-200 rounded-2xl p-8 hover:border-emerald-500 hover:bg-emerald-50/10 cursor-pointer transition-all duration-200 group flex flex-col items-center justify-center space-y-4"
             >
@@ -131,7 +131,7 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
                 <p className="font-bold text-xs text-slate-700">Drag & drop file here</p>
                 <p className="text-[10px] text-slate-400">or</p>
               </div>
-              
+
               <div className="flex gap-2">
                 <Button variant="outline" size="sm" className="flex items-center gap-1.5 font-semibold">
                   <FolderOpen size={13} />
@@ -312,15 +312,15 @@ export const AdmitPatientModal: React.FC<AdmitPatientModalProps> = ({ isOpen, on
 
             {/* Modal actions */}
             <div className="flex gap-3 w-full max-w-sm pt-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="flex-1 font-semibold"
                 onClick={onClose}
               >
                 View Patient Card
               </Button>
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 className="flex-1 font-semibold"
                 onClick={() => {
                   setActivePatientId(newPatientData.id);

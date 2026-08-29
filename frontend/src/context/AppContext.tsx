@@ -46,7 +46,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setLoading(false);
         return;
       }
-      
+
       try {
         setLoading(true);
         const userRes = await http.get<any>(`${config.apiUrl}/auth/me`);
@@ -80,7 +80,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setNotifications([]);
       return;
     }
-    
+
     const loadData = async () => {
       try {
         const pList = await patientService.getPatients();

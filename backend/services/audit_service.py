@@ -34,5 +34,18 @@ class AuditService:
     ) -> List[AuditLog]:
         query = db.query(AuditLog)
         if patient_id:
-            query = query.filter(AuditLog.resource_id == patient_id)
+            from sqlalchemy import or_
+            from backend.models.patient import Patient
+            patient = db.query(Patient).filter(Patient.id == patient_id).first()
+            if patient:
+                query = query.filter(
+                    or_(
+                        AuditLog.resource_id == patient_id,
+                        AuditLog.details.ilike(f"%{patient.name}%"),
+                        AuditLog.details.ilike(f"%{patient.hospital_patient_id}%"),
+                        AuditLog.details.ilike(f"%{patient_id}%")
+                    )
+                )
+            else:
+                query = query.filter(AuditLog.resource_id == patient_id)
         return query.order_by(AuditLog.created_at.desc()).limit(limit).all()
