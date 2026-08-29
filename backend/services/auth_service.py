@@ -1,20 +1,37 @@
 from typing import Dict, Any, Optional
-from passlib.context import CryptContext
+import bcrypt
 from sqlalchemy.orm import Session
 from backend.models.user import User
 from backend.utils.auth import TokenUtils
 from backend.schemas.auth import LoginRequest, RegisterRequest
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class AuthService:
     @staticmethod
     def verify_password(plain_password: str, hashed_password: str) -> bool:
-        return pwd_context.verify(plain_password, hashed_password)
+        try:
+            if isinstance(plain_password, str):
+                plain_bytes = plain_password.encode("utf-8")
+            else:
+                plain_bytes = plain_password
+
+            if isinstance(hashed_password, str):
+                hashed_bytes = hashed_password.encode("utf-8")
+            else:
+                hashed_bytes = hashed_password
+
+            return bcrypt.checkpw(plain_bytes, hashed_bytes)
+        except Exception:
+            return False
 
     @staticmethod
     def get_password_hash(password: str) -> str:
-        return pwd_context.hash(password)
+        if isinstance(password, str):
+            pw_bytes = password.encode("utf-8")
+        else:
+            pw_bytes = password
+        salt = bcrypt.gensalt()
+        return bcrypt.hashpw(pw_bytes, salt).decode("utf-8")
 
     @classmethod
     def register_user(cls, db: Session, payload: RegisterRequest) -> Dict[str, Any]:

@@ -65,6 +65,38 @@
         "timestamp": "2026-08-25T16:34:00.000Z",
         "action": "created"
       }
+  },
+  {
+    "id": "1784288030000-bcrypt-fix",
+    "question": "Why replace passlib with direct bcrypt for password hashing and verification?",
+    "answer": "passlib 1.7.4 calls `_bcrypt.__about__.__version__`, which throws an `AttributeError: module 'bcrypt' has no attribute '__about__'` on modern bcrypt (>=4.0.0) in Python 3.14/3.12+. Replacing passlib with standard `bcrypt.hashpw` and `bcrypt.checkpw` eliminates the error/traceback completely while preserving 100% hash backward-compatibility with existing database credentials.",
+    "timestamp": "2026-08-29T23:03:00+05:30",
+    "tags": [
+      "auth",
+      "bcrypt",
+      "fix",
+      "passlib",
+      "python3.14"
+    ],
+    "files": [
+      "backend/services/auth_service.py",
+      "backend/database/seed.py"
+    ],
+    "relationships": {
+      "supersedes": [],
+      "supersededBy": [],
+      "relatedTo": ["1784288020000-phase1"],
+      "causes": [],
+      "causedBy": []
+    },
+    "priority": "high",
+    "status": "active",
+    "commitHashes": [],
+    "history": [
+      {
+        "timestamp": "2026-08-29T17:33:00.000Z",
+        "action": "created"
+      }
     ]
   }
 ]

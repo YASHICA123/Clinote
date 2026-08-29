@@ -1,11 +1,11 @@
-from passlib.context import CryptContext
+import bcrypt
 from sqlalchemy.orm import Session
 from backend.models import User
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+    pw_bytes = password.encode("utf-8") if isinstance(password, str) else password
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(pw_bytes, salt).decode("utf-8")
 
 def seed_database(db: Session):
     # Check if user accounts already exist

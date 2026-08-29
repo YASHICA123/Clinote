@@ -16,3 +16,4 @@
 - Re-architected `DischargeTab.tsx` as an Admission-Report styled directly editable Document Workstation with a high-fidelity hospital paper canvas, full in-place section editing, editable medication prescription table (+ Add/Delete row), live status stepper, and side-by-side audit feed.
 - Added multi-source clinical data synthesis engine in `dischargeService.ts` pulling live data from Course in Hospital, Vitals, Overview/Diagnoses, Investigations, and Prescriptions.
 - Verified backend test suites (`python -m pytest`) and frontend build (`npm run build`) passed with 0 errors.
+- Resolved `(trapped) error reading bcrypt version: AttributeError: module 'bcrypt' has no attribute '__about__'` by replacing unmaintained `passlib.context.CryptContext` with standard `bcrypt.hashpw` and `bcrypt.checkpw` in `backend/services/auth_service.py` and `backend/database/seed.py`.
